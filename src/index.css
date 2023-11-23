@@ -1,13 +1,105 @@
-:root {
-  --primary: #f5a091;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  font-family: 'Roboto', sans-serif;
 }
+.title{
+ color: white !important;
+}
+/* Navbar */
+
+.Nav>li{
+  position: relative;
+  padding: 0 10px;
+}
+.Nav>li:after{
+  content: "";
+  position: absolute;
+  background-color: #ff3c78;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+.Nav>li:hover{
+  color: #a3a3a3;
+}
+.Nav>li:hover:after{
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Universal Button Styling */
 .uniButton {
   display: flex;
-  padding: .5rem 1.5rem .5rem 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 1.5rem;
   border-radius: 99rem;
-  background-color: var(--primary);
+  background-color: #f5a091;
   transition: all 0.5s ease;
   justify-content: center;
   align-items: center;
@@ -52,3 +144,39 @@
   width: 0.9rem;
   height: 0.9rem;
 }
+
+
+
+/* background
+.absolutes {
+  position: absolute;
+  top: 100px !important;
+  justify-content: center;
+  display: inline-flex;
+  flex-direction: row;
+  
+}
+
+.justify-centeri {
+  justify-content: center;
+}
+
+.bg-shape1 {
+  width: 380px;
+  height: 350px;
+  border-radius: 9999px;
+  position: relative;
+}
+
+.bg-blur {
+  filter: blur(90px);
+}
+.bg-primary {
+  background-color: rgb(30, 0, 255);
+}
+.bg-teal {
+  background-color: rgb(255, 72, 173);
+}
+.bg-purple {
+  background-color: rgb(140, 0, 215);
+} */
