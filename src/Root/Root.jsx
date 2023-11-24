@@ -6,7 +6,9 @@ const Root = () => {
   return (
     <div className="2xl:container mx-auto">
       <Navbar></Navbar>
-      <Outlet></Outlet>
+      <div className="lg:my-10">
+        <Outlet></Outlet>
+      </div>
       <Footer></Footer>
     </div>
   );
