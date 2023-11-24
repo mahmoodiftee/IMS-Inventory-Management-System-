@@ -9,7 +9,6 @@ body {
   color: white !important;
 }
 
-
 /* styles.css (or your stylesheet) */
 .bgs-container {
   background: radial-gradient(
@@ -31,7 +30,6 @@ body {
   z-index: -1;
 }
 
-
 .swiper {
   width: 100%;
   height: 100%;
@@ -40,7 +38,6 @@ body {
 .swiper-slide {
   overflow: hidden;
 }
-
 
 /* Navbar */
 
@@ -63,6 +60,13 @@ body {
 }
 .Nav > li:hover:after {
   width: 100%;
+}
+
+.custom-border-gradient {
+  border-width: 2px;
+  border-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+  border-image-slice: 1;
+  border-style: solid; /* Ensure solid border style */
 }
 
 .chronicle-button {
@@ -97,6 +101,38 @@ body {
     opacity 0.35s linear 0.3s;
 }
 
+/* custom button */
+.Achronicle-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  line-height: 1;
+  padding: 0.815rem 1.232rem;
+  cursor: pointer;
+  border: none;
+  background: #a594fd;
+  color: white;
+  transition: background 0.4s linear;
+  will-change: background;
+}
+
+.Achronicle-button {
+  background: linear-gradient(to right, #3b82f6, #8b5cf6);
+}
+
+.Achronicle-button:hover span:nth-of-type(1) em {
+  opacity: 0;
+  transform: rotateX(90deg) scaleX(0.9) translate3d(0, -10px, 0);
+}
+
+.Achronicle-button:hover span:nth-of-type(2) em {
+  opacity: 1;
+  transform: rotateX(0deg) scaleX(1) translateZ(0);
+  transition: transform 0.75s cubic-bezier(0.645, 0.045, 0.355, 1),
+    opacity 0.35s linear 0.3s;
+}
+
 span {
   position: relative;
   display: block;
@@ -111,7 +147,7 @@ em {
   font-style: normal;
   display: inline-block;
   font-size: 1.125rem;
-  color: black;
+  color: white;
   font-weight: 600;
   will-change: transform, opacity, transition;
   transition: transform 0.55s cubic-bezier(0.645, 0.045, 0.355, 1),

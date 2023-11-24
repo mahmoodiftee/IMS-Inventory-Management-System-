@@ -12,7 +12,7 @@ const Testimonials = () => {
 
   return (
     <div className="p-8 lg:px-12">
-      <div className="mb-20">
+      <div className="mb-6 lg:mb-16">
         <Title head={"What users & Shop Managers like you have to say"}></Title>
         {/* testimonials */}
 
