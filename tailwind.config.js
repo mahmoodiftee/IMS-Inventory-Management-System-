@@ -6,7 +6,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'body': '#fafafc', // Set this to the body background color
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {

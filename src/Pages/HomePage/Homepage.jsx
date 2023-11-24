@@ -1,4 +1,5 @@
 import Banner from "./Banner/Banner";
+import Powers from "./Powers/Powers";
 import USP from "./USP/USP";
 
 const Homepage = () => {
@@ -6,6 +7,7 @@ const Homepage = () => {
     <>
       <Banner></Banner>
       <USP></USP>
+      <Powers></Powers>
     </>
   );
 };

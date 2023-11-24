@@ -4,7 +4,7 @@ import Navbar from "../Components/Navbar/Navbar";
 
 const Root = () => {
   return (
-    <div className="2xl:container mx-auto">
+    <div className="2xl:container bg-body mx-auto">
       <Navbar></Navbar>
       <div className="lg:my-10">
         <Outlet></Outlet>
