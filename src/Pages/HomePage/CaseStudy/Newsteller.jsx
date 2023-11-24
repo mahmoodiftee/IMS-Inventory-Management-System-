@@ -1,6 +1,6 @@
 import { MdOutgoingMail } from "react-icons/md";
 import news from "../../../assets/news.png"
-const CaseStudy = () => {
+const Newsteller = () => {
   return (
     <div className="mb-10 w-[90%] lg:pl-20 mx-auto flex flex-col-reverse lg:flex-row justify-center items-center">
       <div className="flex-grow-0 flex items-center">
@@ -19,12 +19,12 @@ const CaseStudy = () => {
             />
             <button className="Achronicle-button">
               <span>
-                <em className="flex justify-center items-center gap-1 lg:gap-3">
+                <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
                   Subscribe <MdOutgoingMail />
                 </em>
               </span>
               <span>
-                <em className="flex justify-center items-center gap-1 lg:gap-3">
+                <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
                   Subscribe <MdOutgoingMail />
                 </em>
               </span>
@@ -39,4 +39,4 @@ const CaseStudy = () => {
   );
 };
 
-export default CaseStudy;
+export default Newsteller;

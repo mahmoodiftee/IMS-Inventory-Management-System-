@@ -1,8 +1,9 @@
 import Banner from "./Banner/Banner";
-import CaseStudy from "./CaseStudy/CaseStudy";
+import Contact from "./Contact/Contact";
 import Powers from "./Powers/Powers";
 import Testimonials from "./Testimonials/Testimonials";
 import USP from "./USP/USP";
+import Newsteller from "./CaseStudy/newsteller";
 
 const Homepage = () => {
   return (
@@ -11,7 +12,8 @@ const Homepage = () => {
       <USP></USP>
       <Powers></Powers>
       <Testimonials></Testimonials>
-      <CaseStudy></CaseStudy>
+      <Newsteller></Newsteller>
+      <Contact></Contact>
     </>
   );
 };
