@@ -2,16 +2,13 @@ import { MdOutgoingMail } from "react-icons/md";
 import img from "../../../assets/socialss.png";
 const Contact = () => {
   return (
-    <div className="mb-20 mt-24 w-[90%] mx-auto flex flex-col-reverse lg:flex-row lg:gap-20 justify-center items-center">
-      <div className="flex-1">
-        <img className="mx-auto w-[800px] object-cover" src={img} alt="" />
-      </div>
+    <div className="mb-32 mt-24 w-[90%] mx-auto flex flex-col-reverse lg:flex-row-reverse lg:gap-20 justify-center items-center">
       <div className="flex-1 flex items-center">
         <div className="">
           <h1 className="block text-start text-[22px] lg:text-6xl font-extrabold ">
             Contact with us
           </h1>
-          <div className="w-full flex justify-start mt-2 lg:mt-6 lg:gap-4 items-center">
+          <div className="w-full flex justify-start mt-2 lg:mt-6 gap-4 items-center">
             <input
               type="text"
               placeholder="First Name"
@@ -45,6 +42,10 @@ const Contact = () => {
             </span>
           </button>
         </div>
+      </div>
+
+      <div className="flex-1">
+        <img className="mx-auto w-[800px] object-cover" src={img} alt="" />
       </div>
     </div>
   );

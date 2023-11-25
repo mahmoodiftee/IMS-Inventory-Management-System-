@@ -8,9 +8,12 @@ body {
 .title {
   color: white !important;
 }
-
-
-/* styles.css (or your stylesheet) */
+.footer-titles {
+  margin-bottom: 0.5rem/* 8px */;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
 .bgs-container {
   background: radial-gradient(
     circle,
@@ -20,6 +23,7 @@ body {
   opacity: 0.5;
   z-index: -1;
 }
+
 
 .bgss-container {
   background: radial-gradient(

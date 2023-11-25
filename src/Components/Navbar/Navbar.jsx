@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo1.png";
+import logo from "../../assets/logo.png";
 import user from "../../assets/user.png";
 const Navbar = () => {
   const links = (
@@ -30,8 +30,9 @@ const Navbar = () => {
           <ul className="ml-4 Nav flex gap-4 justify-center items-center font-medium">{links}</ul>
         </div>
       </div>
-      <div className="navbar-center">
+      <div className="navbar-center gap-2">
         <img className="w-12" src={logo} alt="" />
+        <p className="font-extrabold bg-gradient-to-r from-[#fcd015] to-[#ff9d00] text-transparent bg-clip-text">IMS</p>
       </div>
       <div className="navbar-end mr-4">
         <div className="dropdown dropdown-end">
