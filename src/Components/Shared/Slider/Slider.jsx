@@ -19,7 +19,7 @@ const Slider = ({ cards }) => {
       className="mySwiper h-[380px]"
     >
       {cards.map((card) => (
-        <SwiperSlide>
+        <SwiperSlide key={card.id}>
           <div className="swiper-zoom-container h-[380px]">
             <SliderCard card={card}></SliderCard>
           </div>

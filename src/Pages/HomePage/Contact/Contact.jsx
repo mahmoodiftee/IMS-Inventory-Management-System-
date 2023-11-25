@@ -27,17 +27,17 @@ const Contact = () => {
           />
           <textarea
             className="mt-4 textarea textarea-bordered bg-transparent lg:h-36 w-full p-2"
-            placeholder="Bio"
+            placeholder="Go on we are listening"
           ></textarea>
           <button className="Achronicle-button mt-4 w-full">
             <span>
               <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                Subscribe <MdOutgoingMail />
+                send <MdOutgoingMail />
               </em>
             </span>
             <span>
               <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                Subscribe <MdOutgoingMail />
+                send <MdOutgoingMail />
               </em>
             </span>
           </button>

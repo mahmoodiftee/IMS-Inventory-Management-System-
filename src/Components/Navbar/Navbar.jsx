@@ -15,20 +15,29 @@ const Navbar = () => {
     });
     navigate("/login");
   };
+  const hasStore = true;
 
   const links = (
     <>
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
-      <li>
-        <NavLink to={"/createStore"}>Create Store</NavLink>
-      </li>
+      {(user && !hasStore) || !user ? (
+        <li>
+          <NavLink to={"/createStore"}>Create Store</NavLink>
+        </li>
+      ) : null}
+      {user && hasStore && (
+        <li>
+          <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        </li>
+      )}
       <li>
         <NavLink to={"/watchDemo"}>Watch Demo</NavLink>
       </li>
     </>
   );
+
   return (
     <div
       className="navbar z-[9999] lg:px-10 bg-transparent"
@@ -107,8 +116,8 @@ const Navbar = () => {
           </div>
         ) : (
           <div className="flex gap-4">
-          <NavLink className="hidden lg:block nav-btn font-medium" to={"/login"}>Login</NavLink>
-          <NavLink className="hidden lg:block nav-btn font-medium" to={"/register"}>Register</NavLink>
+            <NavLink className="hidden lg:block nav-btn font-medium" to={"/login"}>Login</NavLink>
+            <NavLink className="hidden lg:block nav-btn font-medium" to={"/register"}>Register</NavLink>
           </div>
         )}
       </div>

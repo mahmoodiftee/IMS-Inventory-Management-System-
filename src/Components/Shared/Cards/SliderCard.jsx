@@ -17,15 +17,15 @@ const SliderCard = ({card}) => {
          {card.test}
         </h2>
         <div className="absolute bottom-6">
-          <div class="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
-            <div class="flex w-full flex-col gap-0.5">
-              <div class="flex items-center justify-between">
-                <h5 class="block mr-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
+          <div className="relative flex items-center gap-4 pt-0 pb-8 mx-0 mt-4 overflow-hidden text-gray-700 bg-transparent shadow-none rounded-xl bg-clip-border">
+            <div className="flex w-full flex-col gap-0.5">
+              <div className="flex items-center justify-between">
+                <h5 className="block mr-4 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                   {card.author}
                 </h5>
                 <Rating style={{ maxWidth: 90 }} value={card.rating} readOnly />
               </div>
-              <p class="text-start text-sm">{card.role}</p>
+              <p className="text-start text-sm">{card.role}</p>
             </div>
           </div>
         </div>
