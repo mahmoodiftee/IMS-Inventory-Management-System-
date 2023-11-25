@@ -25,10 +25,10 @@ const SocialLogin = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="mt-4 w-[80%] mx-auto">
       <div className="divider">
         <FcGoogle
-          className="text-[150px] cursor-pointer"
+          className="text-[80px] cursor-pointer"
           onClick={() => handleLogin(googleLogin)}
         ></FcGoogle>
       </div>

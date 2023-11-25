@@ -48,23 +48,45 @@ body {
 
 /* Navbar */
 
-.Nav > li {
+.nav-btn {
   position: relative;
   padding: 0 10px;
+  transition: color 0.3s;
 }
-.Nav > li:after {
+
+.nav-btn:after {
   content: "";
   position: absolute;
-  background-color: #ff3c78;
+  background: linear-gradient(to right, #fcd015, #ff9d00);
   height: 3px;
   width: 0;
   left: 0;
   bottom: -10px;
-  transition: 0.3s;
+  transition: 0.3s, width 0.3s; 
 }
-.Nav > li:hover {
-  color: #ff3c78;
+
+
+.nav-btn:hover:after {
+  width: 100%; 
 }
+
+
+.Nav > li {
+  position: relative;
+  padding: 0 10px;
+  transition: color 0.3s;
+}
+.Nav > li:after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to right, #fcd015, #ff9d00);
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s, width 0.3s; 
+}
+
 .Nav > li:hover:after {
   width: 100%;
 }

@@ -11,7 +11,7 @@ const Navbar = () => {
     LogOut();
     Swal.fire({
       icon: "success",
-      text: "user signed out successfully",
+      text: "Successfully signed out",
     });
     navigate("/login");
   };
@@ -31,7 +31,7 @@ const Navbar = () => {
   );
   return (
     <div
-      className="navbar z-[9999] px-10 bg-transparent"
+      className="navbar z-[9999] lg:px-10 bg-transparent"
       style={{ backdropFilter: "blur(7px)" }}
     >
       <div className="navbar-start">
@@ -54,7 +54,7 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className=" menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             {links}
           </ul>
@@ -65,10 +65,10 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-      <div className="navbar-center gap-2 ml-4 lg:ml-10">
-       <Link to={'/'}>
-        <img className="w-12" src={logo} alt="" />
-       </Link>
+      <div className="navbar-center gap-2 ml-4 lg:ml-6">
+        <Link to={'/'}>
+          <img className="w-12" src={logo} alt="" />
+        </Link>
         <p className="font-extrabold bg-gradient-to-r from-[#fcd015] to-[#ff9d00] text-transparent bg-clip-text">
           IMS
         </p>
@@ -83,7 +83,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu z-[9999] menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-[250px]"
+              className="menu  menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-[250px]"
             >
               <li>
                 <button className="btn btn-sm lowercase btn-ghost">
@@ -106,9 +106,10 @@ const Navbar = () => {
             </ul>
           </div>
         ) : (
-          <Link to="/login">
-            <button className="btn btn-sm  btn-ghost">Login</button>
-          </Link>
+          <div className="flex gap-4">
+          <NavLink className="hidden lg:block nav-btn font-medium" to={"/login"}>Login</NavLink>
+          <NavLink className="hidden lg:block nav-btn font-medium" to={"/register"}>Register</NavLink>
+          </div>
         )}
       </div>
     </div>
