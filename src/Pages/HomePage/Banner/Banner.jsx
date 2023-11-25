@@ -4,7 +4,7 @@ import banner from "../../../assets/banner.png";
 
 const Banner = () => {
   return (
-    <div className="relative">
+    <div className="relative mt-24">
       {/* Centered Circle */}
       <div className="w-full absolute top-0 left-0 h-full bgs-container"></div>
 

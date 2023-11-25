@@ -8,7 +8,7 @@ export default {
   theme: {
     extend: {
       backgroundColor: {
-        'body': '#fafafc', // Set this to the body background color
+        'body': '#fafafc',
       },
     },
   },
