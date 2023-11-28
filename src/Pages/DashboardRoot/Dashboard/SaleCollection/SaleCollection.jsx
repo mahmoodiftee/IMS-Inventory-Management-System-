@@ -5,12 +5,36 @@ import { useEffect, useState, useContext } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { FiPlusCircle } from "react-icons/fi";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 const SaleCollection = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const handleAddProduct = async (product) => {
+        try {
+            const response = await axios.post('http://localhost:5000/cart', product, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.data.insertedId) {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Product Successfully Added',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        } catch (error) {
+            console.error('Error adding product:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -90,18 +114,20 @@ const SaleCollection = () => {
                                         </span>
                                     </button>
                                 </div>
-                                <button className="Achronicle-buttonss rounder-xl">
-                                    <span>
-                                        <em className="flex px-[70px] text-white font-bold justify-center items-center gap-1 lg:gap-3">
-                                            <FaShoppingCart /> Cart
-                                        </em>
-                                    </span>
-                                    <span>
-                                        <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                            Proceed to check out
-                                        </em>
-                                    </span>
-                                </button>
+                                <Link to={'/dashboard/cart'}>
+                                    <button className="Achronicle-buttonss rounder-xl">
+                                        <span>
+                                            <em className="flex px-[70px] text-white font-bold justify-center items-center gap-1 lg:gap-3">
+                                                <FaShoppingCart /> Cart
+                                            </em>
+                                        </span>
+                                        <span>
+                                            <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
+                                                Proceed to check out
+                                            </em>
+                                        </span>
+                                    </button>
+                                </Link>
                             </div>
                             {/* Table */}
                             <div className="mt-4">
@@ -137,7 +163,7 @@ const SaleCollection = () => {
                                                     <td className="font-bold pl-8">{product?.productDiscount}%</td>
                                                     <td className="font-bold pl-10">${product?.sellingPrice}</td>
                                                     <td className="">
-                                                        <button className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost">
+                                                        <button onClick={() => handleAddProduct(product)} className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost">
                                                             Add <FiPlusCircle></FiPlusCircle>
                                                         </button>
                                                     </td>

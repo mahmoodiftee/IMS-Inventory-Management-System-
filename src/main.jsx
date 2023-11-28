@@ -17,6 +17,7 @@ import AddProduct from "./Pages/DashboardRoot/DashboardElements/AddProduct/AddPr
 import Subscription from "./Pages/DashboardRoot/Dashboard/Subscription/Subscription";
 import SaleCollection from "./Pages/DashboardRoot/Dashboard/SaleCollection/SaleCollection";
 import Update from "./Pages/DashboardRoot/Dashboard/Update/Update";
+import Cart from "./Pages/DashboardRoot/Dashboard/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/sale-collection',
         element: <SaleCollection></SaleCollection>,
+      },
+      {
+        path: '/dashboard/cart',
+        element: <Cart></Cart>,
       },
       {
         path: "/dashboard/update/:id",
