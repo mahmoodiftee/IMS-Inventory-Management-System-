@@ -38,12 +38,32 @@ const AddProduct = () => {
             const userEmail = userData.email || '';
             const productLimit = userData.productLimit || 0;
 
-            // Check productLimit
-            if (productLimit >= 3) {
-                // User has reached the productLimit, navigate to '/dashboard/subscription'
-                navigate('/dashboard/subscription');
-                return;
-            }
+             // Fetch the user's products to get the count
+        const productsResponse = await axios.get(`http://localhost:5000/products?email=${userEmail}`);
+        const userProducts = productsResponse.data;
+        const userProductCount = userProducts.length;
+
+        // Check productLimit
+        if (userProductCount >= 3) {
+            // User has reached the productLimit, show an alert
+            Swal.fire({
+                position: 'top-center',
+                icon: 'error',
+                title: 'Product Limit Exceeded',
+                text: 'You can\'t add more products. Please upgrade your subscription.',
+                showConfirmButton: true,
+            }).then((result) => {
+                // Check if the user clicked "OK"
+                if (result.isConfirmed) {
+                    // User clicked "OK," navigate to '/dashboard/subscription'
+                    navigate('/dashboard/subscription');
+                }
+            });
+        
+            // No need to navigate here
+            return;
+        }
+
 
 
             // Calculating SellingPrice

@@ -33,9 +33,12 @@ const RightSide = () => {
 
         fetchUserData();
     }, [user]);
+    
     useEffect(() => {
-        console.log(userData);
     }, [userData]);
+
+
+
     return (
         <div className="pt-[1rem] px-1 rounded-2xl MainDash">
             <div className="flex flex-col gap-6 rounded-2xl justify-center items-center">

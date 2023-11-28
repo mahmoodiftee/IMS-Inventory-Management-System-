@@ -1,12 +1,21 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/logo.png";
-import dp from "../../assets/user.png";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+
 const Navbar = () => {
   const navigate = useNavigate();
   const { user, LogOut } = useContext(AuthContext);
+  const [hasStore, setHasStore] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setHasStore(user?.role === 'manager');
+    }
+  }, [user]);
+  
+
   const handleSignOut = () => {
     LogOut();
     Swal.fire({
@@ -15,7 +24,6 @@ const Navbar = () => {
     });
     navigate("/login");
   };
-  const hasStore = true;
 
   const links = (
     <>

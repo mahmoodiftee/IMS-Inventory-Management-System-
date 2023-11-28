@@ -1,24 +1,33 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MdOutlineAddToPhotos } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 const ProductManagement = () => {
+    const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
+    console.log(products);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/products');
-                setProducts(response.data);
+                if (user) {
+                    console.log('User Email:', user.email);
+                    const response = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);                   
+                    const userProducts = response.data;
+                    console.log(userProducts);
+
+                    setProducts(userProducts);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, []);
+    }, [user]);
 
     const productExists = products.length > 0;
 

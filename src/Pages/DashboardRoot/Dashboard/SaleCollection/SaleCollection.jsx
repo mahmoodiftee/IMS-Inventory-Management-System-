@@ -1,31 +1,43 @@
 import axios from "axios";
 import { Player } from '@lottiefiles/react-lottie-player';
 import json from '../../../../assets/jsons/noProduct.json';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
+import { FiPlusCircle } from "react-icons/fi";
 const SaleCollection = () => {
+    const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/products');
-                setProducts(response.data);
+                setLoading(true);
+                setError(null);
+
+                if (user) {
+                    const response = await axios.get(`http://localhost:5000/products?email=${user.email}`);
+                    setProducts(response.data);
+                }
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setError('Error fetching data');
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchData();
-    }, []);
+    }, [user]);
 
     const productExists = products.length > 0;
     const filteredProducts = products.filter(product =>
         product._id.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.productName.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
 
     return (
         <div>
@@ -34,7 +46,11 @@ const SaleCollection = () => {
                     Sales Collection
                 </h1>
 
-                {!productExists ? (
+                {loading && <p>Loading...</p>}
+
+                {error && <p>Error: {error}</p>}
+
+                {!loading && !error && !productExists && (
                     <div className="mt-10">
                         <div className='lg:flex mt-14 flex-col hidden lg:justify-start'>
                             <p className="text-[22px] lg:text-6xl uppercase font-extrabold bg-gradient-to-r text-center from-[#4aca4a] to-[#9cf69c] text-transparent bg-clip-text">No Product</p>
@@ -47,7 +63,9 @@ const SaleCollection = () => {
                             </Player>
                         </div>
                     </div>
-                ) : (
+                )}
+
+                {!loading && !error && productExists && (
                     <div className="mt-10">
                         <div>
                             <div className="w-full flex justify-evenly mt-2 lg:mt-6 items-center">
@@ -120,7 +138,7 @@ const SaleCollection = () => {
                                                     <td className="font-bold pl-10">${product?.sellingPrice}</td>
                                                     <td className="">
                                                         <button className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost">
-                                                            Add For Check-out
+                                                            Add <FiPlusCircle></FiPlusCircle>
                                                         </button>
                                                     </td>
                                                 </tr>
