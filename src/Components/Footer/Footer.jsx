@@ -3,26 +3,27 @@ import bg from "../../assets/bg3.svg";
 
 const Footer = () => {
 
-  const containerStyle = {
-    position: 'relative',
-  };
+  // const containerStyle = {
+  //   position: 'relative',
+  // };
 
-  const pseudoElementStyle = {
-    content: '""',
-    position: 'absolute',
-    top: '-50%',
-    right: 0,
-    bottom: 0,
-    left: 0,
-    backgroundImage: `url(${bg})`,
-    backgroundSize: 'cover',  // Cover the entire container
-    backgroundRepeat: 'no-repeat',  // Do not repeat the background image
-    filter: 'blur(10px)', // Adjust the blur value as needed
-    zIndex: -1,
-  };
+  // const pseudoElementStyle = {
+  //   content: '""',
+  //   position: 'absolute',
+  //   top: '-50%',
+  //   right: 0,
+  //   bottom: 0,
+  //   left: 0,
+  //   backgroundImage: `url(${bg})`,
+  //   backgroundSize: 'cover',  // Cover the entire container
+  //   backgroundRepeat: 'no-repeat',  // Do not repeat the background image
+  //   filter: 'blur(10px)', // Adjust the blur value as needed
+  //   zIndex: -1,
+  // };
   return (
-    <div className="footer-container" style={containerStyle}>
-      <div style={pseudoElementStyle}></div>
+    // <div className="footer-container" style={containerStyle}>
+    <div className="2xl:container mx-auto">
+      <div className="divider divider-neutral w-[30%] mx-auto">o</div>
       <footer className="footer 2xl:container mx-auto p-10 text-base-content">
         <nav className="w-full">
           <div className="mx-auto">
@@ -88,7 +89,7 @@ const Footer = () => {
           </p>
         </nav>
         <nav>
-          <header className="footer-titles text-2xl font-bold">Company</header>
+          <header className="footer-titles text-black text-2xl font-bold">Company</header>
           <p href="/pbout" className="link font-bold link-hover">
             About us
           </p>

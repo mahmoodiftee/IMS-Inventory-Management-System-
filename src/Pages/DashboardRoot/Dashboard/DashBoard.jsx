@@ -2,7 +2,9 @@ import MiddlePart from "../DashboardElements/Middle/MiddlePart";
 
 const DashBoard = () => {
     return (
-        <MiddlePart></MiddlePart>
+        <div className="">
+            <MiddlePart></MiddlePart>
+        </div>
     );
 };
 

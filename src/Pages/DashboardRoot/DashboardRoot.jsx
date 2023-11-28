@@ -4,10 +4,12 @@ import Sidebar from "./DashboardElements/Sidebar/Sidebar";
 
 const DashboardRoot = () => {
     return (
-        <div className="w-full App mx-auto">
-            <div className="2xl:container AppGlass px-4 scroll-container">
+        <div className="2xl:container mx-auto App ">
+            <div className="w-full  px-3 AppGlass scroll-container">
                 <Sidebar></Sidebar>
-                <Outlet></Outlet>
+                <div className="py-[2rem] px-2">
+                    <Outlet></Outlet>
+                </div>
                 <div className="">
                     <RightSide></RightSide>
                 </div>

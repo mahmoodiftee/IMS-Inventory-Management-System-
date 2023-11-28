@@ -1,26 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "../SocialLogins/SocialLogin";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
   const location = useLocation();
   const { LoginUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  const [user, setUser] = useState([]);
   const handleSignIn = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-
     try {
       const response = await LoginUser(email, password);
       Swal.fire({
         icon: 'success',
         text: `Welcome ${response.user.displayName || email}`,
       });
-      navigate(location?.state ? location.state : "/");
+
+      // Fetch user data from the database
+      const res = await axios.get('http://localhost:5000/users');
+      const userData = res.data;
+
+      const currentUser = userData.find((u) => u.email === email);
+      setUser(currentUser);
+      console.log(currentUser && currentUser.shop_id);
+      if (currentUser && currentUser.shop_id) {
+        navigate(location?.state ? location.state : "/dashboard/product-management");
+      } else {
+        navigate(location?.state ? location.state : "/createStore");
+      }
     } catch (error) {
       Swal.fire({
         icon: 'error',
@@ -34,7 +46,7 @@ const Login = () => {
       <div className="flex justify-center items-center ">
         <div className="max-w-[600px] lg:px-10 relative flex flex-col rounded-xl border bg-white bg-clip-border  text-[#403F3F] shadow-none">
           <p className="block w-[60%] mx-auto border-b-2 py-2 text-center text-3xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
-          Login
+            Login
           </p>
           <form
             onSubmit={handleSignIn}
@@ -75,8 +87,8 @@ const Login = () => {
               Sign In
             </button>
             <p className="mt-4 text-[12px] block text-center font-normal leading-relaxed  text-[#403F3F] antialiased">
-            don't have an account?
-            <Link
+              don't have an account?
+              <Link
                 to={"/register"}
                 className="font-medium text-[#403F3F] transition-colors hover:text-[#777676]"
                 href="#"

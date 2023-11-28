@@ -5,6 +5,7 @@ import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import auth from "../FireBase/Firebase.Cofig";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -31,23 +32,26 @@ const Register = () => {
       });
       return;
     }
-  
+
     try {
       await createUser(email, password);
       await updateProfile(auth.currentUser, {
         displayName: name,
         photoURL: photoURL,
       });
-  
+      const userData = {
+        displayName: name,
+        email: email,
+        photoURL: photoURL,
+        role: 'user',
+      };
       Swal.fire({
         icon: 'success',
         text: `Welcome ${name}`,
       });
-      
-  
-      // Your axios.post(...) code goes here
-  
-      navigate(location?.state ? location.state : '/');
+      navigate('/createStore');
+      await axios.post('http://localhost:5000/users', userData);
+
     } catch (error) {
       Swal.fire({
         icon: 'error',

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
-    <div className='bg-white h-screen'>
+    <div className='bg-white 2xl:container mx-auto h-screen'>
       <section className="page_404">
         <div className="container">
           <div className="row">
@@ -19,12 +19,10 @@ const ErrorPage = () => {
                     Look like you're lost
                   </h3>
 
-                  <p className="text-[10px]font-light pb-4">the page you are looking for not avaible!</p>
+                  <p className="text-[10px]font-light pb-4">the page you are looking for is not avaible!</p>
 
                   <Link to={'/'}>
-                    <button
-                      className="bg-black rounded-none hover:shadow-inner px-16 text-white hover:bg-base-200 font-semibold hover:text-black border-none btn">
-                      HOME</button>
+                  <button className="btn btn-sm px-6 mt-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium">Home</button>
                   </Link>
                 </div>
               </div>

@@ -40,8 +40,8 @@ const Navbar = () => {
 
   return (
     <div
-      className="navbar z-[9999] lg:px-10 bg-transparent"
-      style={{ backdropFilter: "blur(7px)" }}
+      className="navbar relative lg:px-10 bg-transparent"
+      style={{ backdropFilter: "blur(7px)", zIndex: '9999' }}
     >
       <div className="navbar-start">
         <div className="dropdown">

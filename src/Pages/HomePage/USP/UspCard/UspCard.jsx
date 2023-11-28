@@ -17,7 +17,7 @@ const UspCard = ({ title, des, json }) => {
   
     return (
       <div
-        className={`shadow-xl cursor-pointer rounded-xl transition-transform transform hover:scale-120 ease-in-out ${
+        className={`shadow-xl bg-white cursor-pointer rounded-xl transition-transform transform hover:scale-120 ease-in-out ${
           isHovered ? "scale-110" : "scale-100"
         }`}
         onMouseEnter={handleMouseEnter}

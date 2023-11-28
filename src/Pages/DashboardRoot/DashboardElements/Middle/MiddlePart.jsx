@@ -2,8 +2,8 @@ import logo from "../../../../assets/man.png"
 import logo1 from "../../../../assets/woman.png"
 const MiddlePart = () => {
     return (
-        <div className=" ">
-            <div className="flex flex-col lg:flex-row items-center justify-center gap-4 pt-[1rem]">
+        <div className="overflow-y-auto">
+            <div className="flex flex-col overflow-y-auto lg:flex-row items-center justify-center gap-4">
                 <div className="w-full p-2 text-white rounded-2xl border mx-auto bg-gradient-to-r from-violet-200 to-pink-200 parentContainer">
                     <div className="stat">
                         <div className="stat-figure text-primary">
@@ -37,11 +37,11 @@ const MiddlePart = () => {
                 </div>
             </div>
             <div className="h-full hidden lg:block mt-4 rounded-2xl ">
-                <div className="lg:mb-2 lg:mt-10 font-bold text-xl">
+                {/* <div className="lg:mb-2 lg:mt-4 font-bold text-xl">
                     <span>
                         User Details
                     </span>
-                </div>
+                </div> */}
                 <div className="overflow-x-auto bg-gradient-to-r from-blue-200 to-cyan-200 px-4 rounded-2xl">
                     <table className="table">
                         {/* head */}
@@ -56,6 +56,122 @@ const MiddlePart = () => {
                             </tr>
                         </thead>
                         <tbody>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={logo} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="text-sm">United States</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Zemlak
+                                    <br />
+                                </td>
+                                <td>Purple</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={logo} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="text-sm">United States</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Zemlak
+                                    <br />
+                                </td>
+                                <td>Purple</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={logo} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="text-sm">United States</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Zemlak
+                                    <br />
+                                </td>
+                                <td>Purple</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
+                            {/* row 1 */}
+                            <tr>
+                                <th>
+                                    <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label>
+                                </th>
+                                <td>
+                                    <div className="flex items-center gap-3">
+                                        <div className="avatar">
+                                            <div className="mask mask-squircle w-12 h-12">
+                                                <img src={logo} alt="Avatar Tailwind CSS Component" />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div className="font-bold">Hart Hagerty</div>
+                                            <div className="text-sm">United States</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    Zemlak
+                                    <br />
+                                </td>
+                                <td>Purple</td>
+                                <th>
+                                    <button className="btn btn-ghost btn-xs">details</button>
+                                </th>
+                            </tr>
                             {/* row 1 */}
                             <tr>
                                 <th>

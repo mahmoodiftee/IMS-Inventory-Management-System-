@@ -11,6 +11,12 @@ import ErrorPage from "../ErrorPage";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import DashboardRoot from "./Pages/DashboardRoot/DashboardRoot";
 import DashBoard from "./Pages/DashboardRoot/Dashboard/DashBoard";
+import CreateStore from "./Pages/CreateStore/CreateStore";
+import ProductManagement from "./Pages/DashboardRoot/Dashboard/Product Management/ProductManagement";
+import AddProduct from "./Pages/DashboardRoot/DashboardElements/AddProduct/AddProduct";
+import Subscription from "./Pages/DashboardRoot/Dashboard/Subscription/Subscription";
+import SaleCollection from "./Pages/DashboardRoot/Dashboard/SaleCollection/SaleCollection";
+import Update from "./Pages/DashboardRoot/Dashboard/Update/Update";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +36,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <Register></Register>,
       },
+      {
+        path: "/createStore",
+        element: <CreateStore></CreateStore>,
+      },
     ],
   },
 
@@ -40,7 +50,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>
+        element: <DashBoard></DashBoard>,
+      },
+      {
+        path: '/dashboard/product-management',
+        element: <ProductManagement></ProductManagement>,
+      },
+      {
+        path: '/dashboard/add-product',
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: '/dashboard/subscription',
+        element: <Subscription></Subscription>,
+      },
+      {
+        path: '/dashboard/sale-collection',
+        element: <SaleCollection></SaleCollection>,
+      },
+      {
+        path: "/dashboard/update/:id",
+        element: <Update></Update>,
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
       },
     ]
   }
