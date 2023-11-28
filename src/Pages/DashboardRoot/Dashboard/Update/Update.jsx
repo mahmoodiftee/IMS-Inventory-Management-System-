@@ -21,7 +21,7 @@ const Update = () => {
         const updateProduct = {
             productName: ProductName,
             productImage: ProductImage,
-            productQuantity: ProductQuantity,
+            productQuantity: parseFloat(ProductQuantity),
             productLocation: ProductLocation,
             productCost: parseFloat(ProductCost),
             productProfit: parseFloat(ProductProfit),
@@ -68,7 +68,7 @@ const Update = () => {
                     </div>
                     <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">
                         <div className="form-control w-full">
-                            <input defaultValue={Product?.productQuantity} name='quantity' type="text" placeholder="Product Quantity" className="input input-bordered w-full text-sm" required />
+                            <input defaultValue={Product?.productQuantity} name='quantity' type="number" placeholder="Product Quantity" className="input input-bordered w-full text-sm" required />
                         </div>
                         <div className="form-control w-full">
                             <input defaultValue={Product?.productProfit} name='profit' type="text" placeholder="Profit Margin" className="input input-bordered w-full text-sm" required />

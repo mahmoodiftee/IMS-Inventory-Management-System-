@@ -9,13 +9,12 @@ import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 const ProductManagement = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
-    console.log(products);
     useEffect(() => {
         const fetchData = async () => {
             try {
                 if (user) {
                     console.log('User Email:', user.email);
-                    const response = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);                   
+                    const response = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);
                     const userProducts = response.data;
                     console.log(userProducts);
 

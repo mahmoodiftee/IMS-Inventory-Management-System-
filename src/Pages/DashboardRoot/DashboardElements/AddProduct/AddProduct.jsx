@@ -79,7 +79,7 @@ const AddProduct = () => {
             const newProduct = {
                 productName: ProductName,
                 productImage: ProductImage,
-                productQuantity: ProductQuantity,
+                productQuantity: parseFloat(ProductQuantity),
                 productLocation: ProductLocation,
                 productCost: parseFloat(ProductCost),
                 productProfit: parseFloat(ProductProfit),
@@ -135,7 +135,7 @@ const AddProduct = () => {
                     </div>
                     <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">
                         <div className="form-control w-full">
-                            <input name='quantity' type="text" placeholder="Product Quantity" className="input input-bordered text-sm" required />
+                            <input name='quantity' type="number" placeholder="Product Quantity" className="input input-bordered text-sm" required />
                         </div>
                         <div className="form-control w-full">
                             <input name='location' type="text" placeholder="Product Location" className="input input-bordered text-sm" required />
