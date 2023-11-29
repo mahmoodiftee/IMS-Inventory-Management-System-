@@ -32,7 +32,7 @@ const Cart = () => {
         const fetchData = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`http://localhost:5000/cart?email=${encodeURIComponent(user.email || '')}`);
+                    const response = await axios.get(`https://ims-server-kappa.vercel.app/cart?email=${encodeURIComponent(user.email || '')}`);
                     const userProducts = response.data;
                     setProducts(userProducts);
                 }
@@ -47,7 +47,7 @@ const Cart = () => {
     const handleGetPaid = async () => {
         try {
             // 1. Insert Data to Sales Collection (/cart route)
-            const saleResponse = await axios.post('http://localhost:5000/sale', newObject, {
+            const saleResponse = await axios.post('https://ims-server-kappa.vercel.app/sale', newObject, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -62,14 +62,14 @@ const Cart = () => {
 
                 const increaseSalesPromises = newObject.products.map(async (product) => {
                     const productId = product._id;
-                    return axios.patch(`http://localhost:5000/products/${productId}`, {
+                    return axios.patch(`https://ims-server-kappa.vercel.app/products/${productId}`, {
                         operationType: 'increaseSaleCount',
                     });
                 });
                 await Promise.all(increaseSalesPromises);
                 const decreaseQuantityPromises = newObject.products.map(async (product) => {
                     const productId = product._id;
-                    return axios.patch(`http://localhost:5000/products/${productId}`, {
+                    return axios.patch(`https://ims-server-kappa.vercel.app/products/${productId}`, {
                         operationType: 'decreaseQuantity',
                     });
                 });
@@ -78,9 +78,9 @@ const Cart = () => {
                
 
                 navigate('/dashboard/pdf');
-                await axios.delete(`http://localhost:5000/cart/clear?email=${encodeURIComponent(user?.email || "")}`);
+                await axios.delete(`https://ims-server-kappa.vercel.app/cart/clear?email=${encodeURIComponent(user?.email || "")}`);
 
-                const cartResponse = await axios.get(`http://localhost:5000/cart?email=${encodeURIComponent(user?.email || "")}`);
+                const cartResponse = await axios.get(`https://ims-server-kappa.vercel.app/cart?email=${encodeURIComponent(user?.email || "")}`);
                 setProducts(cartResponse.data);
             } else {
                 // Show SweetAlert on sale failure

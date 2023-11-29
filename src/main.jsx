@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/createStore",
-        element: <CreateStore></CreateStore>,
+        element: <PrivateRoute><CreateStore></CreateStore></PrivateRoute>,
       },
     ],
   },
@@ -57,23 +57,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/product-management',
-        element: <ProductManagement></ProductManagement>,
+        element:<PrivateRoute> <ProductManagement></ProductManagement></PrivateRoute>,
       },
       {
         path: '/dashboard/add-product',
-        element: <AddProduct></AddProduct>,
+        element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>,
       },
       {
         path: '/dashboard/subscription',
-        element: <Subscription></Subscription>,
+        element: <PrivateRoute><Subscription></Subscription></PrivateRoute>,
       },
       {
         path: '/dashboard/sale-collection',
-        element: <SaleCollection></SaleCollection>,
+        element:<PrivateRoute> <SaleCollection></SaleCollection></PrivateRoute>,
       },
       {
         path: '/dashboard/cart',
-        element: <Cart></Cart>,
+        element:<PrivateRoute> <Cart></Cart></PrivateRoute>,
       },
       {
         path: '/dashboard/pdf',
@@ -83,12 +83,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update/:id",
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/products/${params.id}`)
       },
       {
         path: "/dashboard/payment/:id",
         element: <Payment />,
-        loader: ({ params }) => fetch(`http://localhost:5000/cards/${params.id}`)
+        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/cards/${params.id}`)
       },
     ]
   }

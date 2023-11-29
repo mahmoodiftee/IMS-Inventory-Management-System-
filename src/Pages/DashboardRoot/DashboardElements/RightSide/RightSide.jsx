@@ -22,7 +22,7 @@ const RightSide = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const usersResponse = await axios.get('http://localhost:5000/users');
+                const usersResponse = await axios.get('https://ims-server-kappa.vercel.app/users');
                 const allUsers = usersResponse.data;
                 const userInfo = allUsers.find(u => u.email === user?.email);
                 setUserData(userInfo);

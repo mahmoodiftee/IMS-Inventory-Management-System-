@@ -8,7 +8,6 @@ import { motion } from "framer-motion"; import {
     UilChart,
     UilCreateDashboard,
     UilBox,
-    UilBill,
     UilUniversity,
 } from "@iconscout/react-unicons";
 import { NavLink } from "react-router-dom";
@@ -21,7 +20,7 @@ const Sidebar = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/users");
+                const response = await axios.get("https://ims-server-kappa.vercel.app/users");
                 const userData = response.data;
                 const currentUser = userData.find((u) => u.role === 'manager');
                 const role = currentUser && currentUser.role !== null && currentUser.role !== undefined;
@@ -40,6 +39,11 @@ const Sidebar = () => {
         ...(user && manager
             ? [
                 {
+                    icon: UilCreateDashboard,
+                    heading: "Dashboard",
+                    link: "/dashboard",
+                },
+                {
                     icon: UilBox,
                     heading: "Product Management",
                     link: "/dashboard/product-management",
@@ -54,11 +58,7 @@ const Sidebar = () => {
                     heading: "Payment and Subscription",
                     link: "/dashboard/subscription",
                 },
-                // {
-                //     icon: UilBill,
-                //     heading: "Offers and Coupon",
-                //     link: "/dashboard/customers",
-                // },
+
                 {
                     icon: UilChart,
                     heading: "Sales Summary",
@@ -79,7 +79,7 @@ const Sidebar = () => {
             ]
         ),
     ];
-    
+
 
     const [selected, setSelected] = useState(0);
 

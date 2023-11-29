@@ -29,7 +29,7 @@ const Update = () => {
             productDescription: ProductDescription,
         };
 
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://ims-server-kappa.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
