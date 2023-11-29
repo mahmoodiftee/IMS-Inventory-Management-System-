@@ -1,4 +1,3 @@
-import axios from "axios";
 import { Player } from '@lottiefiles/react-lottie-player';
 import json from '../../../../assets/jsons/noProduct.json';
 import { useEffect, useState, useContext } from "react";
@@ -7,11 +6,12 @@ import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { FiPlusCircle } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 const SaleCollection = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext); // Use the loading from AuthContext
     const [products, setProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const handleAddProduct = async (product) => {
@@ -43,7 +43,6 @@ const SaleCollection = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setLoading(true);
                 setError(null);
 
                 if (user) {
@@ -53,13 +52,11 @@ const SaleCollection = () => {
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setError('Error fetching data');
-            } finally {
-                setLoading(false);
             }
         };
 
         fetchData();
-    }, [user]);
+    }, [user, loading]); 
 
     const productExists = products.length > 0;
     const filteredProducts = products.filter(product =>

@@ -19,6 +19,7 @@ import SaleCollection from "./Pages/DashboardRoot/Dashboard/SaleCollection/SaleC
 import Update from "./Pages/DashboardRoot/Dashboard/Update/Update";
 import Cart from "./Pages/DashboardRoot/Dashboard/Cart/Cart";
 import PDF from "./Pages/DashboardRoot/Dashboard/Cart/PDF/PDF";
+import Payment from "./Components/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -76,12 +77,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/pdf',
-        element: <PDF/>,
+        element: <PDF />,
       },
+
       {
         path: "/dashboard/update/:id",
         element: <Update></Update>,
         loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+      },
+      {
+        path: "/dashboard/payment/:id",
+        element: <Payment />,
+        loader: ({ params }) => fetch(`http://localhost:5000/cards/${params.id}`)
       },
     ]
   }
