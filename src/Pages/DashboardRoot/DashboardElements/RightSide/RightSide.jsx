@@ -54,10 +54,10 @@ const RightSide = () => {
                     </div>
                     <p className='mx-auto  font-medium bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text'>{userData?.displayName}</p>
                     <p className='mx-auto  font-medium bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text'>Role: {userData?.role}</p>
-                    <div className='flex gap-3'>
-                        <button onClick={handleSignOut} className="btn border-none btn-sm px-6 bg-gradient-to-r from-blue-200 shadow-lg to-cyan-200 text-white font-medium">Logout</button>
+                    <div className='flex gap-2 px-2'>
+                        <button onClick={handleSignOut} className="btn border-none text-[11px] font-bold btn-sm px-4 bg-gradient-to-r from-blue-400 shadow-lg to-cyan-400 text-white ">Logout</button>
                         <Link to={'/'}>
-                            <button className="btn border-none btn-sm px-7 bg-gradient-to-r from-blue-200 to-cyan-200 shadow-lg text-white font-medium">Home</button>
+                            <button className="btn border-none btn-sm px-5  text-[11px] font-bold bg-gradient-to-r from-cyan-400 to-blue-400 shadow-lg text-white ">Home</button>
                         </Link>
                     </div>
                 </div>

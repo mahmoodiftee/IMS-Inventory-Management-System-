@@ -50,12 +50,12 @@ const Subscription = () => {
                         <button style={{ borderRadius: '10px' }} className="Achronicle-button mt-4 w-full">
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                         </button>
@@ -89,7 +89,7 @@ const Subscription = () => {
                                     <UilCheck />
                                 </button>
                                 <p className="block font-sans text-lg antialiased font-normal leading-relaxed text-inherit">
-                                    5 team members
+                                    10 team members
                                 </p>
                             </li>
                             <li className="flex items-center gap-2">
@@ -106,12 +106,12 @@ const Subscription = () => {
                         <button style={{ borderRadius: '10px' }} className="Achronicle-button mt-4 w-full">
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                         </button>
@@ -143,7 +143,7 @@ const Subscription = () => {
                                     <UilCheck />
                                 </button>
                                 <p className="block font-sans text-lg antialiased font-normal leading-relaxed text-inherit">
-                                    5 team members
+                                    20 team members
                                 </p>
                             </li>
                             <li className="flex items-center gap-2">
@@ -160,12 +160,12 @@ const Subscription = () => {
                         <button style={{ borderRadius: '10px' }} className="Achronicle-button mt-4 w-full">
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Buy <MdOutgoingMail />
+                                Purchase <MdOutgoingMail />
                                 </em>
                             </span>
                         </button>

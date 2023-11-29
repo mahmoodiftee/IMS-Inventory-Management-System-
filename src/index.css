@@ -11,9 +11,15 @@
   background: rgba(255, 255, 255, 0.54);
   border-radius: 2rem;
   gap: 16px;
-  grid-template-columns: 15rem auto 15rem;
+  grid-template-columns: 15rem auto 12rem;
   overflow: hidden;
 }
+
+.overflow-wrap-custom {
+  overflow-wrap: break-word;
+  word-wrap: break-word; /* Fallback for older browsers */
+}
+
 
 @media screen and (max-width: 1200px) {
   .AppGlass {

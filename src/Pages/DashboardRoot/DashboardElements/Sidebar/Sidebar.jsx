@@ -50,16 +50,15 @@ const Sidebar = () => {
                     link: "/dashboard/sale-collection",
                 },
                 {
-                    icon: UilBill,
-                    heading: "Offers and Coupon",
-                    link: "/dashboard/customers",
-                },
-                {
                     icon: UilUniversity,
                     heading: "Payment and Subscription",
                     link: "/dashboard/subscription",
                 },
-
+                {
+                    icon: UilBill,
+                    heading: "Offers and Coupon",
+                    link: "/dashboard/customers",
+                },
                 {
                     icon: UilChart,
                     heading: "Sales Summary",

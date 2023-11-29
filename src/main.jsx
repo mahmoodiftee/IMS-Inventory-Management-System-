@@ -18,6 +18,7 @@ import Subscription from "./Pages/DashboardRoot/Dashboard/Subscription/Subscript
 import SaleCollection from "./Pages/DashboardRoot/Dashboard/SaleCollection/SaleCollection";
 import Update from "./Pages/DashboardRoot/Dashboard/Update/Update";
 import Cart from "./Pages/DashboardRoot/Dashboard/Cart/Cart";
+import PDF from "./Pages/DashboardRoot/Dashboard/Cart/PDF/PDF";
 
 const router = createBrowserRouter([
   {
@@ -72,6 +73,10 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/cart',
         element: <Cart></Cart>,
+      },
+      {
+        path: '/dashboard/pdf',
+        element: <PDF/>,
       },
       {
         path: "/dashboard/update/:id",

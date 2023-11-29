@@ -7,7 +7,7 @@ const DashboardRoot = () => {
         <div className="2xl:container mx-auto App ">
             <div className="w-full  px-3 AppGlass scroll-container">
                 <Sidebar></Sidebar>
-                <div className="py-[2rem] px-2">
+                <div className="py-[2rem] overflow-auto px-2">
                     <Outlet></Outlet>
                 </div>
                 <div className="">

@@ -3,10 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { FaStripeS } from "react-icons/fa6";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
+    const navigate = useNavigate();
     const currentDate = new Date();
 
     // Format date
@@ -50,10 +52,7 @@ const Cart = () => {
                     'Content-Type': 'application/json',
                 },
             });
-
-            // Check if sale was successful
             if (saleResponse.status === 200) {
-                // Show SweetAlert on success
                 Swal.fire({
                     icon: 'success',
                     title: 'Purchase Successful!',
@@ -61,7 +60,6 @@ const Cart = () => {
                     confirmButtonText: 'OK',
                 });
 
-                // 2. Increase Sales Count (/product route)
                 const increaseSalesPromises = newObject.products.map(async (product) => {
                     const productId = product._id;
                     return axios.patch(`http://localhost:5000/products/${productId}`, {
@@ -69,7 +67,6 @@ const Cart = () => {
                     });
                 });
                 await Promise.all(increaseSalesPromises);
-                // 3. Decrease Quantity (/product route)
                 const decreaseQuantityPromises = newObject.products.map(async (product) => {
                     const productId = product._id;
                     return axios.patch(`http://localhost:5000/products/${productId}`, {
@@ -78,13 +75,13 @@ const Cart = () => {
                 });
 
                 await Promise.all(decreaseQuantityPromises);
+               
 
-            // 4. Clear the cart after successful purchase
-            await axios.delete(`http://localhost:5000/cart/clear?email=${encodeURIComponent(user?.email || "")}`);
+                navigate('/dashboard/pdf');
+                await axios.delete(`http://localhost:5000/cart/clear?email=${encodeURIComponent(user?.email || "")}`);
 
-            // 5. Refresh the products list after clearing the cart
-            const cartResponse = await axios.get(`http://localhost:5000/cart?email=${encodeURIComponent(user?.email || "")}`);
-            setProducts(cartResponse.data);
+                const cartResponse = await axios.get(`http://localhost:5000/cart?email=${encodeURIComponent(user?.email || "")}`);
+                setProducts(cartResponse.data);
             } else {
                 // Show SweetAlert on sale failure
                 Swal.fire({
@@ -113,7 +110,7 @@ const Cart = () => {
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-5xl font-extrabold">
                 Cart Collection
             </h1>
-            <div className="flex justify-start items-center ">
+            <div className="flex mt-4 justify-center items-center ">
                 <button onClick={handleGetPaid} className="Achronicle-buttonss">
                     <span>
                         <em className="flex text-white   font-bold justify-center items-center gap-1 lg:gap-1">

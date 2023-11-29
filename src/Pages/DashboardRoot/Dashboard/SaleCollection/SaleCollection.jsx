@@ -16,12 +16,16 @@ const SaleCollection = () => {
 
     const handleAddProduct = async (product) => {
         try {
+            await axios.post('http://localhost:5000/pdf', product, {
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
             const response = await axios.post('http://localhost:5000/cart', product, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-
             if (response.data.insertedId) {
                 Swal.fire({
                     position: 'top-center',
@@ -92,7 +96,7 @@ const SaleCollection = () => {
                 {!loading && !error && productExists && (
                     <div className="mt-10">
                         <div>
-                            <div className="w-full flex justify-evenly mt-2 lg:mt-6 items-center">
+                            <div className="w-full flex justify-evenly gap-4 mt-2 lg:mt-6 items-center">
                                 <div className="flex justify-certer items-center">
                                     <input
                                         type="text"
@@ -132,7 +136,7 @@ const SaleCollection = () => {
                             {/* Table */}
                             <div className="mt-4">
                                 <div className="">
-                                    <table className="table">
+                                    <table className="table overflow-auto">
                                         {/* head */}
                                         <thead>
                                             <tr>
@@ -142,7 +146,7 @@ const SaleCollection = () => {
                                                 <th className="font-bold text-sm">Quantity</th>
                                                 <th className="font-bold text-sm">Discount</th>
                                                 <th className="font-bold text-sm">Selling Price</th>
-                                                <th className="font-bold text-sm pl-6">Action</th>
+                                                <th className="font-bold text-sm pl-6">Add to cart</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -157,11 +161,11 @@ const SaleCollection = () => {
                                                             />
                                                         </div>
                                                     </td>
-                                                    <td className="font-bold">{product?._id}</td>
+                                                    <td className="font-bold max-w-[120px] overflow-wrap-custom">{product?._id}</td>
                                                     <td className="font-bold">{product?.productName}</td>
                                                     <td className="font-bold pl-10">{product?.productQuantity}</td>
                                                     <td className="font-bold pl-8">{product?.productDiscount}%</td>
-                                                    <td className="font-bold pl-10">${product?.sellingPrice}</td>
+                                                    <td className="font-bold pl-8">${product?.sellingPrice}</td>
                                                     <td className="">
                                                         <button onClick={() => handleAddProduct(product)} className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost">
                                                             Add <FiPlusCircle></FiPlusCircle>
