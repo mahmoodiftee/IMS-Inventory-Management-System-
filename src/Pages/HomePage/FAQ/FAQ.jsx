@@ -51,7 +51,7 @@ const FAQ = () => {
         setExpanded(newExpanded ? panel : false);
     };
     return (
-        <div className="lg:mt-20 p-8 lg:p-16">
+        <div className="lg:mt-20 w-[90%] mx-auto border-4 p-8 lg:p-16">
             <div className="lg:mt-24 lg:my-20 my-8">
                 <h1 className="text-black text-start text-[22px] lg:text-6xl font-extrabold">
                     <span className="bg-gradient-to-r text-center from-blue-500 to-purple-500 text-transparent bg-clip-text">Frequently Asked Questions
