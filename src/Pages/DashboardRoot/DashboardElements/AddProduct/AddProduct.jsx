@@ -5,14 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { Helmet } from "react-helmet-async";
-
 const AddProduct = () => {
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
     const [shops, setShops] = useState([]);
+    const [imgBB, setImgBB] = useState();
     console.log(shops);
-    console.log(products.length);
+    console.log(imgBB);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -33,22 +33,33 @@ const AddProduct = () => {
 
         fetchData();
     }, [user]);
-
-
-
-    // console.log(user?.email);
     const handleCreateStore = async (e) => {
         e.preventDefault();
         const ProductName = e.target.name.value;
-        const ProductImage = e.target.img.value;
+        const ProductImageFile = e.target.img.files[0];
         const ProductQuantity = e.target.quantity.value;
         const ProductLocation = e.target.location.value;
         const ProductCost = parseFloat(e.target.cost.value).toFixed(2);
         const ProductProfit = parseFloat(e.target.profit.value).toFixed(2);
         const ProductDiscount = parseFloat(e.target.discount.value).toFixed(2);
         const ProductDescription = e.target.des.value;
-
+        const formData = new FormData();
+        formData.append('image', ProductImageFile);
+        console.log({ ProductName, ProductImageFile, ProductQuantity, ProductLocation, ProductCost, ProductProfit, ProductDiscount, ProductDescription });
         try {
+            // hosting img to imgbb
+            const responseImg = await axios.post('https://api.imgbb.com/1/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                params: {
+                    key: 'b21321b69dce0a6efd75bdd3a28ee2ee',
+                },
+            });
+            const imageUrl = responseImg.data.data.url;
+            console.log(imageUrl);
+            setImgBB(imageUrl)
+
             // Fetch all user details
             const usersResponse = await axios.get('http://localhost:5000/users');
             const allUsers = usersResponse.data;
@@ -99,7 +110,7 @@ const AddProduct = () => {
             // Product object
             const newProduct = {
                 productName: ProductName,
-                productImage: ProductImage,
+                productImage: imageUrl,
                 productQuantity: parseFloat(ProductQuantity),
                 productLocation: ProductLocation,
                 productCost: parseFloat(ProductCost),
@@ -113,7 +124,7 @@ const AddProduct = () => {
                 addedDate: addedDate,
                 saleCount: 0,
             };
-
+            console.log(newProduct);
             // Creating a new product using Axios
             const response = await axios.post('http://localhost:5000/products', newProduct);
 
@@ -154,7 +165,7 @@ const AddProduct = () => {
                             <input name='name' type="text" placeholder="Product Name" className="input input-bordered  text-sm" required />
                         </div>
                         <div className="form-control w-full">
-                            <input name='img' type="text" placeholder=" Image" className="input input-bordered  text-sm" required />
+                            <input name='img' type="file" className="file-input bg-transparent file-input-bordered w-full " />
                         </div>
                     </div>
                     <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">

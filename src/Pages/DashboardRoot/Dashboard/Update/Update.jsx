@@ -2,55 +2,85 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { GiCycle } from "react-icons/gi";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Update = () => {
     const Product = useLoaderData();
     const { _id } = Product || {};
     const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const ProductName = e.target.name.value;
-        const ProductImage = e.target.img.value;
-        const ProductQuantity = e.target.quantity.value;
-        const ProductLocation = e.target.location.value;
-        const ProductCost = parseFloat(e.target.cost.value).toFixed(2);
-        const ProductProfit = parseFloat(e.target.profit.value).toFixed(2);
-        const ProductDiscount = parseFloat(e.target.discount.value).toFixed(2);
-        const ProductDescription = e.target.des.value;
-
-        const updateProduct = {
-            productName: ProductName,
-            productImage: ProductImage,
-            productQuantity: parseFloat(ProductQuantity),
-            productLocation: ProductLocation,
-            productCost: parseFloat(ProductCost),
-            productProfit: parseFloat(ProductProfit),
-            productDiscount: parseFloat(ProductDiscount),
-            productDescription: ProductDescription,
-        };
-
-        fetch(`http://localhost:5000/products/${_id}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateProduct)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount > 0) {
-                    Swal.fire({
-                        position: 'top-center',
-                        icon: 'success',
-                        title: 'Product Successfully Updated',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    navigate(`/dashboard/product-management`);
-                }
+    
+        try {
+            const ProductName = e.target.name.value;
+            const ProductImageFile = e.target.img.files[0];
+            const ProductQuantity = e.target.quantity.value;
+            const ProductLocation = e.target.location.value;
+            const ProductCost = parseFloat(e.target.cost.value).toFixed(2);
+            const ProductProfit = parseFloat(e.target.profit.value).toFixed(2);
+            const ProductDiscount = parseFloat(e.target.discount.value).toFixed(2);
+            const ProductDescription = e.target.des.value;
+    
+            const formData = new FormData();
+            formData.append('image', ProductImageFile);
+    
+            // hosting img to imgbb
+            const responseImg = await axios.post('https://api.imgbb.com/1/upload', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                params: {
+                    key: 'b21321b69dce0a6efd75bdd3a28ee2ee',
+                },
             });
+    
+            const imageUrl = responseImg.data.data.url;
+    
+            const updateProduct = {
+                productName: ProductName,
+                productImage: imageUrl,
+                productQuantity: parseFloat(ProductQuantity),
+                productLocation: ProductLocation,
+                productCost: parseFloat(ProductCost),
+                productProfit: parseFloat(ProductProfit),
+                productDiscount: parseFloat(ProductDiscount),
+                productDescription: ProductDescription,
+            };
+    
+            // Fetch update
+            const response = await fetch(`http://localhost:5000/products/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updateProduct),
+            });
+    
+            const data = await response.json();
+    
+            if (data.modifiedCount > 0) {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: 'Product Successfully Updated',
+                    showConfirmButton: false,
+                    timer: 1500,
+                });
+                navigate(`/dashboard/product-management`);
+            }
+        } catch (error) {
+            console.error('Error updating product:', error);
+            Swal.fire({
+                position: 'top-center',
+                icon: 'error',
+                title: 'Error Updating Product',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+        }
     };
+    
 
     return (
         <div>
@@ -62,12 +92,12 @@ const Update = () => {
             </h1>
             <div className="card w-[80%] mx-auto">
                 <form onSubmit={handleSubmit} className="card-body w-full">
-                    <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">
+                <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">
                         <div className="form-control w-full">
-                            <input defaultValue={Product?.productName} name='name' type="text" placeholder="Product Name" className="input input-bordered w-full text-sm" required />
+                            <input name='name' type="text" placeholder="Product Name" className="input input-bordered  text-sm" required />
                         </div>
                         <div className="form-control w-full">
-                            <input defaultValue={Product?.productImage} name='img' type="text" placeholder="Image" className="input input-bordered w-full text-sm" required />
+                            <input name='img' type="file" className="file-input bg-transparent file-input-bordered w-full " />
                         </div>
                     </div>
                     <div className="mb-2 flex flex-col lg:flex-row justify-between gap-4">
