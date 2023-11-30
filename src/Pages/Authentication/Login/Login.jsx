@@ -4,6 +4,7 @@ import SocialLogin from "../SocialLogins/SocialLogin";
 import { AuthContext } from "../../../Components/AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const location = useLocation();
@@ -48,6 +49,9 @@ const Login = () => {
 
   return (
     <div className="mt-10 lg:mt-20 h-screen">
+      <Helmet>
+        <title>IMS | Login</title>
+      </Helmet>
       <div className="flex justify-center items-center ">
         <div className="max-w-[600px] lg:px-10 relative flex flex-col rounded-xl border bg-white bg-clip-border  text-[#403F3F] shadow-none">
           <p className="block w-[60%] mx-auto border-b-2 py-2 text-center text-3xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">

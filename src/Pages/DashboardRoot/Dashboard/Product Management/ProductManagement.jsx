@@ -6,6 +6,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 const ProductManagement = () => {
     const { user } = useContext(AuthContext);
     const [products, setProducts] = useState([]);
@@ -67,6 +68,9 @@ const ProductManagement = () => {
     return (
         <div>
             <div className="">
+            <Helmet>
+                <title>Dashboard | Manage Products</title>
+            </Helmet>
                 <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-5xl font-extrabold">
                     Manage Products
                 </h1>

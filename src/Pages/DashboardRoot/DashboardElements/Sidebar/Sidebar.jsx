@@ -23,9 +23,7 @@ const Sidebar = () => {
                 const response = await axios.get("http://localhost:5000/users");
                 const userData = response.data;
                 const loggedInUser = userData.find(u => u.email === user.email);
-                console.log(loggedInUser);
                 const userRole = loggedInUser.role;
-                console.log(userRole);
 
                 if (userRole === "manager") {
                     setManager(true);

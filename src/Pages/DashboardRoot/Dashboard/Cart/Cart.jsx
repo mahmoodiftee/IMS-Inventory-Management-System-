@@ -4,6 +4,7 @@ import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { FaStripeS } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Cart = () => {
     const { user } = useContext(AuthContext);
@@ -75,7 +76,7 @@ const Cart = () => {
                 });
 
                 await Promise.all(decreaseQuantityPromises);
-               
+
 
                 navigate('/dashboard/pdf');
                 await axios.delete(`http://localhost:5000/cart/clear?email=${encodeURIComponent(user?.email || "")}`);
@@ -107,6 +108,9 @@ const Cart = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Cart</title>
+            </Helmet>
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-5xl font-extrabold">
                 Cart Collection
             </h1>

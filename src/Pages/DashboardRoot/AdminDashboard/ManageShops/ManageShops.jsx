@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { IoIosNotifications } from "react-icons/io";
+import { Helmet } from "react-helmet-async";
 const ManageShops = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -41,6 +42,9 @@ const ManageShops = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Manage Shops</title>
+            </Helmet>
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-3xl font-extrabold">
                 Manage Shops
             </h1>

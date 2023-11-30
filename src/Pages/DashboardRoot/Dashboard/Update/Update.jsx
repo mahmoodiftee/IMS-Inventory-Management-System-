@@ -1,6 +1,7 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { GiCycle  } from "react-icons/gi";
+import { GiCycle } from "react-icons/gi";
+import { Helmet } from "react-helmet-async";
 
 const Update = () => {
     const Product = useLoaderData();
@@ -53,6 +54,9 @@ const Update = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Update Product</title>
+            </Helmet>
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-3xl font-extrabold">
                 UPDATE PRODUCT
             </h1>
@@ -94,12 +98,12 @@ const Update = () => {
                         <button type='submit' className="Achronicle-buttons rounded-xl w-full">
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Update Product <GiCycle  />
+                                    Update Product <GiCycle />
                                 </em>
                             </span>
                             <span>
                                 <em className="flex text-white justify-center items-center gap-1 lg:gap-3">
-                                    Update Product <GiCycle  />
+                                    Update Product <GiCycle />
                                 </em>
                             </span>
                         </button>

@@ -7,6 +7,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from 'react-helmet-async';
 
 const SaleCollection = () => {
     const { user, loading } = useContext(AuthContext); // Use the loading from AuthContext
@@ -67,6 +68,9 @@ const SaleCollection = () => {
     return (
         <div>
             <div className="">
+            <Helmet>
+                <title>Dashboard | Sale Collection</title>
+            </Helmet>
                 <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-5xl font-extrabold">
                     Sales Collection
                 </h1>

@@ -6,6 +6,7 @@ import { FaFilePdf } from 'react-icons/fa6';
 import { FaCloudDownloadAlt } from 'react-icons/fa';
 import { Document, Page, View, Text, StyleSheet } from '@react-pdf/renderer';
 import MyDocument from './MyDocument';
+import { Helmet } from 'react-helmet-async';
 
 const PDF = () => {
     const { user } = useContext(AuthContext);
@@ -78,6 +79,9 @@ const PDF = () => {
 
     return (
         <div className=''>
+            <Helmet>
+                <title>Dashboard | Download Pay Slip</title>
+            </Helmet>
             <h1 className="text-black mt-2 mb-6 lg:w-[60%] mx-auto text-center text-xl lg:text-5xl font-extrabold">
                 PAY SLIP
             </h1>

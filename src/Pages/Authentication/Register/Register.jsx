@@ -6,6 +6,7 @@ import { updateProfile } from "firebase/auth";
 import auth from "../FireBase/Firebase.Cofig";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser } = useContext(AuthContext);
@@ -63,6 +64,9 @@ const Register = () => {
 
   return (
     <div className="mt-10 h-screen">
+      <Helmet>
+        <title>IMS | Registration</title>
+      </Helmet>
       <div className="flex justify-center items-center ">
         <div className="max-w-[600px] lg:px-10 relative flex flex-col rounded-xl border bg-white bg-clip-border  text-[#403F3F] shadow-none">
           <p className="block w-[60%] mx-auto border-b-2 py-2 text-center text-3xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">

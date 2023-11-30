@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { MdOutgoingMail } from 'react-icons/md';
 import { AuthContext } from '../../../../Components/AuthProvider/AuthProvider';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Subscription = () => {
     const { loading } = useContext(AuthContext);
@@ -27,6 +28,10 @@ const Subscription = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Subscriptions</title>
+            </Helmet>
+
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-3xl font-extrabold">
                 Subscription Packages
             </h1>

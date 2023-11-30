@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 const CreateStore = () => {
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
@@ -74,6 +75,9 @@ const CreateStore = () => {
 
     return (
         <div className=''>
+            <Helmet>
+                <title>IMS | Create Store</title>
+            </Helmet>
             <Link to={'/'} className="btn fixed text-2xl font-bold text-[#50d850] m-4 btn-circle">
                 <IoMdArrowRoundBack />
             </Link>

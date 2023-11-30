@@ -1,13 +1,41 @@
 import { FaShop } from "react-icons/fa6";
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const AddProduct = () => {
     const navigate = useNavigate();
     const { user } = useContext(AuthContext);
+    const [products, setProducts] = useState([]);
+    const [shops, setShops] = useState([]);
+    console.log(shops);
+    console.log(products.length);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                if (user) {
+                    console.log('User Email:', user.email);
+                    const userResponse = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);
+                    const userProducts = userResponse.data;
+                    setProducts(userProducts);
+                    const shopResponse = await axios.get(`http://localhost:5000/shops?email=${encodeURIComponent(user.email || '')}`);
+                    const Shopss = shopResponse.data;
+                    setShops(Shopss);
+
+                }
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [user]);
+
+
+
     // console.log(user?.email);
     const handleCreateStore = async (e) => {
         e.preventDefault();
@@ -36,33 +64,26 @@ const AddProduct = () => {
             const shopId = userData.shop_id || '';
             const shopName = userData.ShopName || '';
             const userEmail = userData.email || '';
-            const productLimit = userData.productLimit || 0;
 
-             // Fetch the user's products to get the count
-        const productsResponse = await axios.get(`http://localhost:5000/products?email=${userEmail}`);
-        const userProducts = productsResponse.data;
-        const userProductCount = userProducts.length;
+            const userProductCount = products.length;
+            if (userProductCount > 2) {
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: 'Product Limit Exceeded',
+                    text: 'You can\'t add more products. Please upgrade your subscription.',
+                    showConfirmButton: true,
+                }).then((result) => {
+                    // Check if the user clicked "OK"
+                    if (result.isConfirmed) {
+                        // User clicked "OK," navigate to '/dashboard/subscription'
+                        navigate('/dashboard/subscription');
+                    }
+                });
 
-        // Check productLimit
-        if (userProductCount >= 3) {
-            // User has reached the productLimit, show an alert
-            Swal.fire({
-                position: 'top-center',
-                icon: 'error',
-                title: 'Product Limit Exceeded',
-                text: 'You can\'t add more products. Please upgrade your subscription.',
-                showConfirmButton: true,
-            }).then((result) => {
-                // Check if the user clicked "OK"
-                if (result.isConfirmed) {
-                    // User clicked "OK," navigate to '/dashboard/subscription'
-                    navigate('/dashboard/subscription');
-                }
-            });
-        
-            // No need to navigate here
-            return;
-        }
+                // No need to navigate here
+                return;
+            }
 
 
 
@@ -120,6 +141,9 @@ const AddProduct = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard | Add Product</title>
+            </Helmet>
             <h1 className="text-black lg:w-[60%] mx-auto text-center text-xl lg:text-3xl font-extrabold">
                 PRODUCT DETAILS
             </h1>

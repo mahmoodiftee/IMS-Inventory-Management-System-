@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
-import { FaBoxesStacked } from "react-icons/fa6";
+import { FaBoxesPacking } from "react-icons/fa6";
 import { GiTakeMyMoney } from "react-icons/gi";
 import { FiPlusCircle } from "react-icons/fi";
 import { AiFillCarryOut } from "react-icons/ai";
+import { Helmet } from "react-helmet-async";
 const AdminSaleSummary = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -61,6 +62,9 @@ const AdminSaleSummary = () => {
     const totalProduct = saleData.length;
     return (
         <div className="overflow-y-auto">
+            <Helmet>
+                <title>Dashboard | Sale Summary</title>
+            </Helmet>
             {authLoading && <p>Loading...</p>}
 
             {error && <p>Error: {error.message}</p>}
@@ -80,7 +84,7 @@ const AdminSaleSummary = () => {
                         <div className="w-full text-white rounded-2xl border mx-auto bg-gradient-to-r from-pink-500 to-rose-500 parentContainer">
                             <div className="stat">
                                 <div className="stat-figure text-3xl text-white font-bold">
-                                    <FaBoxesStacked />
+                                    <FaBoxesPacking />
                                 </div>
                                 <div className="stat-title text-2xl font-bold text-white ">Total Products</div>
                                 <div className="stat-value text-white ">{(totalProduct).toFixed(0)}</div>
