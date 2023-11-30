@@ -7,6 +7,7 @@ import { FiPlusCircle } from "react-icons/fi";
 import { AiFillCarryOut } from "react-icons/ai";
 import { Helmet } from "react-helmet-async";
 import DiagramChart from "../../DashboardElements/RightSide/pie/DiagramChart";
+import Modal from "./Notify/Modal/Modal";
 const AdminSaleSummary = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -14,6 +15,8 @@ const AdminSaleSummary = () => {
     const [saleData, setSaleData] = useState([]);
     const [payment, setPayment] = useState([]);
     const [error, setError] = useState(null);
+    const [selectedShop, setSelectedShop] = useState(null);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -47,9 +50,10 @@ const AdminSaleSummary = () => {
     }, []);
 
 
-    const handleNotify = () => {
-
-        console.log('Notify button clicked');
+    const handleNotify = (shop) => {
+        console.log('Notify button clicked for:', shop?.displayName);
+        setSelectedShop(shop);
+        document.getElementById("my_modal_5").showModal();
     };
 
     const totalSaleCount = saleData ? saleData.reduce((sum, product) => {
@@ -131,9 +135,13 @@ const AdminSaleSummary = () => {
                                             <td className="text-[16px] font-medium mx-auto">
                                                 {user?.role}
                                                 {user.role && user.role.toLowerCase() === 'user' && (
-                                                    <button onClick={() => handleNotify()} className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost">
-                                                        Send Promo <FiPlusCircle />
+                                                    <button
+                                                        onClick={() => handleNotify(user)}
+                                                        className="btn text-lg btn-sm hover:bg-green-500 hover:text-white text-green-500 bg-white btn-ghost"
+                                                    >
+                                                        Notify <FiPlusCircle />
                                                     </button>
+
                                                 )}
                                             </td>
                                         </tr>
@@ -144,6 +152,7 @@ const AdminSaleSummary = () => {
                     </div>
                 </div>
             )}
+            {selectedShop && <Modal shop={selectedShop} />}
         </div>
     );
 }
