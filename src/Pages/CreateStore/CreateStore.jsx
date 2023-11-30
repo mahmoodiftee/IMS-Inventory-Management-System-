@@ -33,12 +33,12 @@ const CreateStore = () => {
         };
 
         // Creating a new shop using Axios
-        axios.post('http://localhost:5000/shops', newStore)
+        axios.post('https://ims-server-kappa.vercel.app/shops', newStore)
             .then(response => {
                 const data = response.data;
                 if (data.insertedId) {
                     // After successfully creating a shop, update the user role using Axios
-                    return axios.patch('http://localhost:5000/updateUserRole', { email: ownerEmail, shop: { insertedId: data.insertedId, ...newStore } });
+                    return axios.patch('https://ims-server-kappa.vercel.app/updateUserRole', { email: ownerEmail, shop: { insertedId: data.insertedId, ...newStore } });
                 } else {
                     throw new Error('Failed to create a shop.');
                 }

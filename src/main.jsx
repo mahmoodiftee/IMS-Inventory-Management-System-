@@ -91,12 +91,12 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update/:id",
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/products/${params.id}`)
       },
       {
         path: "/dashboard/payment/:id",
         element: <Payment />,
-        loader: ({ params }) => fetch(`http://localhost:5000/cards/${params.id}`)
+        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/cards/${params.id}`)
       },
       //Admin Routes
       {

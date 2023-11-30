@@ -23,7 +23,7 @@ const Login = () => {
       });
 
       // Fetch user data from the database
-      const res = await axios.get('http://localhost:5000/users');
+      const res = await axios.get('https://ims-server-kappa.vercel.app/users');
       const userData = res.data;
 
       const currentUser = userData.find((u) => u.email === email);

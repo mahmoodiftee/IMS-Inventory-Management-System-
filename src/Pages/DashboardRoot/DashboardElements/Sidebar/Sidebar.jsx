@@ -20,7 +20,7 @@ const Sidebar = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/users");
+                const response = await axios.get("https://ims-server-kappa.vercel.app/users");
                 const userData = response.data;
                 const loggedInUser = userData.find(u => u.email === user.email);
                 const userRole = loggedInUser.role;

@@ -55,7 +55,7 @@ const PDF = () => {
         const fetchData = async () => {
             try {
                 if (user) {
-                    const response = await axios.get(`http://localhost:5000/pdf?email=${encodeURIComponent(user.email || '')}`);
+                    const response = await axios.get(`https://ims-server-kappa.vercel.app/pdf?email=${encodeURIComponent(user.email || '')}`);
                     const userProducts = response.data;
                     console.log(userProducts);
                     setProducts(userProducts);
@@ -71,8 +71,8 @@ const PDF = () => {
     }, [user]);
 
     const handleDownload = async () => {
-        await axios.delete(`http://localhost:5000/pdf/clear?email=${encodeURIComponent(user?.email || "")}`);
-        const cartResponse = await axios.get(`http://localhost:5000/cart?email=${encodeURIComponent(user?.email || "")}`);
+        await axios.delete(`https://ims-server-kappa.vercel.app/pdf/clear?email=${encodeURIComponent(user?.email || "")}`);
+        const cartResponse = await axios.get(`https://ims-server-kappa.vercel.app/cart?email=${encodeURIComponent(user?.email || "")}`);
         setProducts(cartResponse.data);
     };
 

@@ -18,10 +18,10 @@ const AddProduct = () => {
             try {
                 if (user) {
                     console.log('User Email:', user.email);
-                    const userResponse = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);
+                    const userResponse = await axios.get(`https://ims-server-kappa.vercel.app/products?email=${encodeURIComponent(user.email || '')}`);
                     const userProducts = userResponse.data;
                     setProducts(userProducts);
-                    const shopResponse = await axios.get(`http://localhost:5000/shops?email=${encodeURIComponent(user.email || '')}`);
+                    const shopResponse = await axios.get(`https://ims-server-kappa.vercel.app/shops?email=${encodeURIComponent(user.email || '')}`);
                     const Shopss = shopResponse.data;
                     setShops(Shopss);
 
@@ -61,7 +61,7 @@ const AddProduct = () => {
             setImgBB(imageUrl)
 
             // Fetch all user details
-            const usersResponse = await axios.get('http://localhost:5000/users');
+            const usersResponse = await axios.get('https://ims-server-kappa.vercel.app/users');
             const allUsers = usersResponse.data;
 
             // Find the user with the correct email
@@ -126,11 +126,11 @@ const AddProduct = () => {
             };
             console.log(newProduct);
             // Creating a new product using Axios
-            const response = await axios.post('http://localhost:5000/products', newProduct);
+            const response = await axios.post('https://ims-server-kappa.vercel.app/products', newProduct);
 
             if (response.data.insertedId) {
                 // Successfully inserted product, now update productLimit for the user
-                await axios.patch('http://localhost:5000/updateProductLimit', { email: userEmail });
+                await axios.patch('https://ims-server-kappa.vercel.app/updateProductLimit', { email: userEmail });
 
                 Swal.fire({
                     position: 'top-center',

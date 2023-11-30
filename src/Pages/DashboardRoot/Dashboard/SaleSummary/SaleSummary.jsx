@@ -6,6 +6,7 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GiPayMoney } from "react-icons/gi";
 import { GiTakeMyMoney } from "react-icons/gi";
 import DiagramChart from "../../DashboardElements/RightSide/pie/DiagramChart";
+import { Helmet } from "react-helmet-async";
 const SaleSummary = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const SaleSummary = () => {
             try {
                 if (user) {
                     console.log('User Email:', user.email);
-                    const response = await axios.get('http://localhost:5000/sale');
+                    const response = await axios.get('https://ims-server-kappa.vercel.app/sale');
                     const filteredProduct = response.data.filter(item => item.cartUserEmail === user.email);
                     setProducts(filteredProduct);
                 }
@@ -49,6 +50,9 @@ const SaleSummary = () => {
 
             {!authLoading && !error && (
                 <div>
+                    <Helmet>
+                        <title>Dashboard | Sale Summary</title>
+                    </Helmet>
                     <div className="flex flex-col overflow-y-auto lg:flex-row items-center justify-center gap-4">
                         <div className="w-full text-white rounded-2xl border mx-auto bg-gradient-to-r from-orange-500 to-red-500 parentContainer">
                             <div className="stat">

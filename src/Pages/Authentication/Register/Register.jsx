@@ -51,7 +51,7 @@ const Register = () => {
         text: `Welcome ${name}`,
       });
       navigate('/createStore');
-      await axios.post('http://localhost:5000/users', userData);
+      await axios.post('https://ims-server-kappa.vercel.app/users', userData);
 
     } catch (error) {
       Swal.fire({

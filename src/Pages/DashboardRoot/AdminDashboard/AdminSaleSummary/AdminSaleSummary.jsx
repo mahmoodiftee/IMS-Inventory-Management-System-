@@ -18,7 +18,7 @@ const AdminSaleSummary = () => {
         const fetchData = async () => {
             try {
                 if (user) {
-                    const response = await axios.get('http://localhost:5000/products');
+                    const response = await axios.get('https://ims-server-kappa.vercel.app/products');
                     console.log(response.data);
                     setSaleData(response.data);
 
@@ -33,9 +33,9 @@ const AdminSaleSummary = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/users');
+                const response = await axios.get('https://ims-server-kappa.vercel.app/users');
                 setSales(response.data);
-                const Paymentresponse = await axios.get('http://localhost:5000/payment');
+                const Paymentresponse = await axios.get('https://ims-server-kappa.vercel.app/payment');
                 setPayment(Paymentresponse.data);
             }
             catch (error) {
@@ -72,6 +72,9 @@ const AdminSaleSummary = () => {
 
             {!authLoading && !error && (
                 <div>
+                    <Helmet>
+                        <title>Dashboard | Sale Summary</title>
+                    </Helmet>
                     <div className="flex flex-col overflow-y-auto lg:flex-row items-center justify-center gap-4">
                         <div className="w-full text-white rounded-2xl border mx-auto bg-gradient-to-r from-orange-500 to-red-500 parentContainer">
                             <div className="stat">

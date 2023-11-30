@@ -5,7 +5,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import USP from "./USP/USP";
 import Newsteller from "./CaseStudy/newsteller";
 import Header from "./Header/Header";
-import FAQ from "./FAQ/FAQ";
+import FAQ from "./FAG/FAQ";
 
 const Homepage = () => {
   return (

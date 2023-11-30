@@ -16,7 +16,7 @@ const ManageShops = () => {
             try {
                 if (user) {
                     console.log('User Email:', user.email);
-                    const response = await axios.get('http://localhost:5000/shops');
+                    const response = await axios.get('https://ims-server-kappa.vercel.app/shops');
                     setProducts(response.data);
                 }
             } catch (error) {
