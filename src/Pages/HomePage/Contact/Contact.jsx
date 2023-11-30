@@ -45,7 +45,7 @@ const Contact = () => {
       </div>
 
       <div className="flex-1">
-        <img className="mx-auto w-[800px] object-cover" src={img} alt="" />
+      <img className="mx-auto w-[800px] object-cover rotate-infinite" src={img} alt="" />
       </div>
     </div>
   );

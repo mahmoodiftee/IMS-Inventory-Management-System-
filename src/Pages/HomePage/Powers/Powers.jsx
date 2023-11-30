@@ -14,7 +14,7 @@ const Powers = () => {
       </div>
       <div className="">
         <div className="grid grid-cols-1 md:grid-cols-12 grid-rows-7 gap-8">
-          <div className="overflow-hidden col-span-1 md:col-span-4 rounded-2xl md:row-span-3 h-60 bg-white shadow-lg p-4">
+        <div data-aos="fade-right" className="overflow-hidden col-span-1 md:col-span-4 rounded-2xl md:row-span-3 h-60 bg-white shadow-lg p-4">
             <p className="text-[22px] font-[900]">
               Present without even <br /> being there
             </p>
@@ -23,7 +23,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div className="col-span-1 overflow-hidden md:col-span-5 rounded-2xl md:row-span-4 h-72 bg-white shadow-lg p-4">
+          <div data-aos="fade-down" className="col-span-1 overflow-hidden md:col-span-5 rounded-2xl md:row-span-4 h-72 bg-white shadow-lg p-4">
             <p className="text-[22px] font-extrabold">
               Keep you products upto date
             </p>
@@ -32,7 +32,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div className="col-span-1 overflow-hidden md:col-span-3 rounded-2xl md:row-span-3 h-60 bg-white shadow-lg p-4">
+          <div data-aos="fade-left" className="col-span-1 overflow-hidden md:col-span-3 rounded-2xl md:row-span-3 h-60 bg-white shadow-lg p-4">
             <p className="text-[22px] font-extrabold">
               Everything managed <br /> in one place
             </p>
@@ -41,7 +41,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div className="col-span-1 md:col-span-4 rounded-2xl md:row-span-4 h-96 bg-white shadow-lg p-4">
+          <div data-aos="fade-right" className="col-span-1 md:col-span-4 rounded-2xl md:row-span-4 h-96 bg-white shadow-lg p-4">
             <p className="text-[22px] mt-10 font-extrabold">
               Get feedback from <br /> back in time
             </p>
@@ -75,7 +75,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div className="col-span-1 overflow-hidden relative bg-gradient-to-r from-[#037cff] to-[#5eacff] md:col-span-5 rounded-2xl md:row-span-3 h-[335px] md:-mt-10 bg-white shadow-lg p-4">
+          <div data-aos="fade-up" className="col-span-1 overflow-hidden relative bg-gradient-to-r from-[#037cff] to-[#5eacff] md:col-span-5 rounded-2xl md:row-span-3 h-[335px] md:-mt-10 bg-white shadow-lg p-4">
             <p className="text-[22px] text-white font-extrabold">
               Organize work in the dashboard
             </p>
@@ -84,7 +84,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div className="overflow-hidden relative col-span-1 md:col-span-3 rounded-2xl md:row-span-4 h-96 md:-mt-[90px] bg-white shadow-lg p-4">
+          <div data-aos="fade-left" className="overflow-hidden relative col-span-1 md:col-span-3 rounded-2xl md:row-span-4 h-96 md:-mt-[90px] bg-white shadow-lg p-4">
             <p className="text-[22px] font-extrabold mt-4">
               Get instant payments with payment records
             </p>
