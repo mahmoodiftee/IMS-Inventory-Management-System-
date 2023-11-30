@@ -5,6 +5,7 @@ import Testimonials from "./Testimonials/Testimonials";
 import USP from "./USP/USP";
 import Newsteller from "./CaseStudy/newsteller";
 import Header from "./Header/Header";
+import FAQ from "./FAQ/FAQ";
 
 const Homepage = () => {
   return (
@@ -16,6 +17,7 @@ const Homepage = () => {
       <Testimonials></Testimonials>
       <Newsteller></Newsteller>
       <Contact></Contact>
+      <FAQ></FAQ>
     </>
   );
 };

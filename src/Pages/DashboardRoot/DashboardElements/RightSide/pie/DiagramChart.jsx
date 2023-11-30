@@ -24,8 +24,8 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 
 const DiagramChart = () => {
   return (
-    <>
-      <PieChart width={200} height={200}>
+    <div className=''> 
+      <PieChart width={200} height={200} className='mx-auto'>
         <Pie
           data={data}
           cx="50%"
@@ -41,7 +41,7 @@ const DiagramChart = () => {
           ))}
         </Pie>
       </PieChart>
-    </>
+    </div>
   );
 };
 

@@ -6,6 +6,7 @@ import { GiTakeMyMoney } from "react-icons/gi";
 import { FiPlusCircle } from "react-icons/fi";
 import { AiFillCarryOut } from "react-icons/ai";
 import { Helmet } from "react-helmet-async";
+import DiagramChart from "../../DashboardElements/RightSide/pie/DiagramChart";
 const AdminSaleSummary = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -99,6 +100,9 @@ const AdminSaleSummary = () => {
                                 <div className="stat-value text-white ">{(totalSaleCount).toFixed(0)}</div>
                             </div>
                         </div>
+                    </div>
+                    <div className="mt-4">
+                        <DiagramChart></DiagramChart>
                     </div>
                     <div className="mt-4">
                         <span className="text-center text-4xl mb-4 font-extrabold bg-gradient-to-r from-blue-500 to-purple-500 text-transparent bg-clip-text">Users</span>

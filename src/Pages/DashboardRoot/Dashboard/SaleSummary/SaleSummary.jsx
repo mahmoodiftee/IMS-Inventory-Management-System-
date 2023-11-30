@@ -5,6 +5,7 @@ import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { GiPayMoney } from "react-icons/gi";
 import { GiTakeMyMoney } from "react-icons/gi";
+import DiagramChart from "../../DashboardElements/RightSide/pie/DiagramChart";
 const SaleSummary = () => {
 
     const { user, loading: authLoading } = useContext(AuthContext);
@@ -78,12 +79,15 @@ const SaleSummary = () => {
                         </div>
                     </div>
                     <div className="mt-4">
+                        <DiagramChart></DiagramChart>
+                    </div>
+                    <div className="mt-4">
                         <div className="overflow-x-auto">
                             <table className="table">
                                 {/* head */}
                                 <thead>
                                     <tr>
-                                    <th className="font-bold text-lg">Image</th>
+                                        <th className="font-bold text-lg">Image</th>
                                         <th className="font-bold text-lg">Product Name</th>
                                         <th className="font-bold text-lg">Selling date</th>
                                         <th className="font-bold text-lg">Profit</th>

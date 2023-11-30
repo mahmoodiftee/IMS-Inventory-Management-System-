@@ -75,7 +75,7 @@ const Powers = () => {
             </div>
           </div>
 
-          <div data-aos="fade-up" className="col-span-1 overflow-hidden relative bg-gradient-to-r from-[#037cff] to-[#5eacff] md:col-span-5 rounded-2xl md:row-span-3 h-[335px] md:-mt-10 bg-white shadow-lg p-4">
+          <div className="col-span-1 overflow-hidden relative bg-gradient-to-r from-[#037cff] to-[#5eacff] md:col-span-5 rounded-2xl md:row-span-3 h-[335px] md:-mt-10 bg-white shadow-lg p-4">
             <p className="text-[22px] text-white font-extrabold">
               Organize work in the dashboard
             </p>
