@@ -20,6 +20,9 @@ import Update from "./Pages/DashboardRoot/Dashboard/Update/Update";
 import Cart from "./Pages/DashboardRoot/Dashboard/Cart/Cart";
 import PDF from "./Pages/DashboardRoot/Dashboard/Cart/PDF/PDF";
 import Payment from "./Components/Payment/Payment";
+import SaleSummary from "./Pages/DashboardRoot/Dashboard/SaleSummary/SaleSummary";
+import ManageShops from "./Pages/DashboardRoot/AdminDashboard/ManageShops/ManageShops";
+import AdminSaleSummary from "./Pages/DashboardRoot/AdminDashboard/AdminSaleSummary/AdminSaleSummary";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/product-management',
-        element:<PrivateRoute> <ProductManagement></ProductManagement></PrivateRoute>,
+        element: <PrivateRoute> <ProductManagement></ProductManagement></PrivateRoute>,
       },
       {
         path: '/dashboard/add-product',
@@ -69,11 +72,15 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/sale-collection',
-        element:<PrivateRoute> <SaleCollection></SaleCollection></PrivateRoute>,
+        element: <PrivateRoute> <SaleCollection></SaleCollection></PrivateRoute>,
       },
       {
         path: '/dashboard/cart',
-        element:<PrivateRoute> <Cart></Cart></PrivateRoute>,
+        element: <PrivateRoute> <Cart></Cart></PrivateRoute>,
+      },
+      {
+        path: '/dashboard/sale-summary',
+        element: <PrivateRoute><SaleSummary /></PrivateRoute>,
       },
       {
         path: '/dashboard/pdf',
@@ -83,12 +90,21 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/update/:id",
         element: <Update></Update>,
-        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/products/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
       },
       {
         path: "/dashboard/payment/:id",
         element: <Payment />,
-        loader: ({ params }) => fetch(`https://ims-server-kappa.vercel.app/cards/${params.id}`)
+        loader: ({ params }) => fetch(`http://localhost:5000/cards/${params.id}`)
+      },
+      //Admin Routes
+      {
+        path: '/dashboard/manage-shops',
+        element: <ManageShops></ManageShops>,
+      },
+      {
+        path: '/dashboard/admin-sale-summary',
+        element: <AdminSaleSummary/>,
       },
     ]
   }

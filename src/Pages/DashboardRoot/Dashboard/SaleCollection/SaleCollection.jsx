@@ -16,12 +16,12 @@ const SaleCollection = () => {
 
     const handleAddProduct = async (product) => {
         try {
-            await axios.post('https://ims-server-kappa.vercel.app/pdf', product, {
+            await axios.post('http://localhost:5000/pdf', product, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
             });
-            const response = await axios.post('https://ims-server-kappa.vercel.app/cart', product, {
+            const response = await axios.post('http://localhost:5000/cart', product, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -46,7 +46,7 @@ const SaleCollection = () => {
                 setError(null);
 
                 if (user) {
-                    const response = await axios.get(`https://ims-server-kappa.vercel.app/products?email=${user.email}`);
+                    const response = await axios.get(`http://localhost:5000/products?email=${user.email}`);
                     setProducts(response.data);
                 }
             } catch (error) {

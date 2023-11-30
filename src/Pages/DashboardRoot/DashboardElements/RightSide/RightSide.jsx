@@ -22,7 +22,7 @@ const RightSide = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const usersResponse = await axios.get('https://ims-server-kappa.vercel.app/users');
+                const usersResponse = await axios.get('http://localhost:5000/users');
                 const allUsers = usersResponse.data;
                 const userInfo = allUsers.find(u => u.email === user?.email);
                 setUserData(userInfo);
@@ -33,7 +33,7 @@ const RightSide = () => {
 
         fetchUserData();
     }, [user]);
-    
+
     useEffect(() => {
     }, [userData]);
 
@@ -61,9 +61,20 @@ const RightSide = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="w-full h-[320px] flex rounded-2xl bg-gradient-to-r from-violet-200 to-pink-200 justify-center items-center">
-                    {/* Uncomment the following line when Pie component is ready */}
-                    {/* <Pie /> */}
+                <div className="w-full h-[320px] flex flex-col rounded-2xl bg-gradient-to-r from-violet-200 to-pink-200 justify-center items-start">
+                    <div className="avatar mb-4 mx-auto online">
+                        <div className="w-32 mask mask-squircle">
+                            {userData && userData?.ShopLogo ? (
+                                <img src={userData?.ShopLogo} alt="User Avatar" />
+                            ) : (
+                                <img src={logo} alt="Default Avatar" />
+                            )}
+                        </div>
+                    </div>
+                    <div className='w-full'>
+                        <p className='text-center font-medium mx-auto text-white text-lg'>{userData?.ShopName}</p>
+                        <p className='text-center font-medium mx-auto text-white text-lg'>Owner:{userData?.displayName}</p>
+                    </div>
                 </div>
             </div>
         </div>

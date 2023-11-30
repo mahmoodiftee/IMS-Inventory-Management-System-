@@ -25,7 +25,7 @@ const SocialLogin = () => {
           role: 'user',
         };
 
-        return axios.post("https://ims-server-kappa.vercel.app/users", userData);
+        return axios.post("http://localhost:5000/users", userData);
       })
       .then(() => {
         navigate(location?.state ? location.state : "/"); // Keep this navigate

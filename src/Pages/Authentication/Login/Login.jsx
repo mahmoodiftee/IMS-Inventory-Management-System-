@@ -22,16 +22,21 @@ const Login = () => {
       });
 
       // Fetch user data from the database
-      const res = await axios.get('https://ims-server-kappa.vercel.app/users');
+      const res = await axios.get('http://localhost:5000/users');
       const userData = res.data;
 
       const currentUser = userData.find((u) => u.email === email);
       setUser(currentUser);
       console.log(currentUser && currentUser.shop_id);
-      if (currentUser && currentUser.shop_id) {
-        navigate(location?.state ? location.state : "/dashboard");
-      } else {
-        navigate(location?.state ? location.state : "/createStore");
+
+      if (currentUser) {
+        if (currentUser.shop_id) {
+          navigate(location?.state ? location.state : "/dashboard");
+        } else if (currentUser.role === "admin") {
+          navigate(location?.state ? location.state : "/dashboard");
+        } else {
+          navigate(location?.state ? location.state : "/createStore");
+        }
       }
     } catch (error) {
       Swal.fire({

@@ -22,7 +22,7 @@ const AddProduct = () => {
 
         try {
             // Fetch all user details
-            const usersResponse = await axios.get('https://ims-server-kappa.vercel.app/users');
+            const usersResponse = await axios.get('http://localhost:5000/users');
             const allUsers = usersResponse.data;
 
             // Find the user with the correct email
@@ -39,7 +39,7 @@ const AddProduct = () => {
             const productLimit = userData.productLimit || 0;
 
              // Fetch the user's products to get the count
-        const productsResponse = await axios.get(`https://ims-server-kappa.vercel.app/products?email=${userEmail}`);
+        const productsResponse = await axios.get(`http://localhost:5000/products?email=${userEmail}`);
         const userProducts = productsResponse.data;
         const userProductCount = userProducts.length;
 
@@ -94,11 +94,11 @@ const AddProduct = () => {
             };
 
             // Creating a new product using Axios
-            const response = await axios.post('https://ims-server-kappa.vercel.app/products', newProduct);
+            const response = await axios.post('http://localhost:5000/products', newProduct);
 
             if (response.data.insertedId) {
                 // Successfully inserted product, now update productLimit for the user
-                await axios.patch('https://ims-server-kappa.vercel.app/updateProductLimit', { email: userEmail });
+                await axios.patch('http://localhost:5000/updateProductLimit', { email: userEmail });
 
                 Swal.fire({
                     position: 'top-center',

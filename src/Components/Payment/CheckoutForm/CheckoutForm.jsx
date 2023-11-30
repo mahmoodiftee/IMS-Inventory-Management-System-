@@ -19,7 +19,7 @@ const CheckoutForm = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const paymentIntentResponse = await fetch("https://ims-server-kappa.vercel.app/create-payment-intent", {
+                const paymentIntentResponse = await fetch("http://localhost:5000/create-payment-intent", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ price: totalPrice }),
@@ -104,8 +104,9 @@ const CheckoutForm = () => {
                     tansaction_id: paymentIntent.id,
                 }
                 try {
-                    const response = await axios.post('https://ims-server-kappa.vercel.app/payment', paymentData);
+                    const response = await axios.post('http://localhost:5000/payment', paymentData);
                     console.log(response.data);
+                    
                 } catch (error) {
                     console.error('Error sending payment:', error);
                 }

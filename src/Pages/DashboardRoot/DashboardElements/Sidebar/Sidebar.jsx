@@ -14,93 +14,108 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../../../Components/AuthProvider/AuthProvider";
 const Sidebar = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const [manager, setManager] = useState(false);
-
+    const [isAdmin, setIsAdmin] = useState(false);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get("https://ims-server-kappa.vercel.app/users");
+                const response = await axios.get("http://localhost:5000/users");
                 const userData = response.data;
-                const currentUser = userData.find((u) => u.role === 'manager');
-                const role = currentUser && currentUser.role !== null && currentUser.role !== undefined;
-                setManager(role);
+                const loggedInUser = userData.find(u => u.email === user.email);
+                console.log(loggedInUser);
+                const userRole = loggedInUser.role;
+                console.log(userRole);
+
+                if (userRole === "manager") {
+                    setManager(true);
+                } else if (userRole === "admin") {
+                    setIsAdmin(true);
+                }
             } catch (error) {
                 console.error("Error fetching user data:", error.message);
             }
         };
-        if (user) {
+
+        if (user && !loading) {
             fetchData();
         }
-    }, [user]);
+    }, [user, loading]);
 
-
-    const SidebarData = [
-        ...(user && manager
-            ? [
-                {
-                    icon: UilCreateDashboard,
-                    heading: "Dashboard",
-                    link: "/dashboard",
-                },
-                {
-                    icon: UilBox,
-                    heading: "Product Management",
-                    link: "/dashboard/product-management",
-                },
-                {
-                    icon: UilShoppingBag,
-                    heading: "Sale Collection",
-                    link: "/dashboard/sale-collection",
-                },
-                {
-                    icon: UilUniversity,
-                    heading: "Payment and Subscription",
-                    link: "/dashboard/subscription",
-                },
-
-                {
-                    icon: UilChart,
-                    heading: "Sales Summary",
-                    link: "/dashboard/analytics",
-                },
-            ]
-            : [
-                {
-                    icon: UilShop,
-                    heading: "Manage Shop",
-                    link: "/dashboard",
-                },
-                {
-                    icon: UilChart,
-                    heading: "Sale-Summary",
-                    link: "/dashboard/orders",
-                },
-            ]
-        ),
-    ];
-
+    const SidebarData = manager
+    ? [
+        {
+          icon: UilCreateDashboard,
+          heading: "Dashboard",
+          link: "/dashboard",
+        },
+        {
+          icon: UilBox,
+          heading: "Product Management",
+          link: "/dashboard/product-management",
+        },
+        {
+          icon: UilShoppingBag,
+          heading: "Sale Collection",
+          link: "/dashboard/sale-collection",
+        },
+        {
+          icon: UilUniversity,
+          heading: "Payment and Subscription",
+          link: "/dashboard/subscription",
+        },
+        {
+          icon: UilChart,
+          heading: "Sales Summary",
+          link: "/dashboard/sale-summary",
+        },
+      ]
+    : isAdmin
+    ? [
+        {
+            icon: UilCreateDashboard,
+            heading: "Dashboard",
+            link: "/dashboard",
+          },
+        {
+          icon: UilShop,
+          heading: "Manage Shop",
+          link: "/dashboard/manage-shops",
+        },
+        {
+          icon: UilChart,
+          heading: "Sales Summary",
+          link: "/dashboard/admin-sale-summary",
+        },
+      ]
+    : [];
+  
 
     const [selected, setSelected] = useState(0);
-
-    const [expanded, setExpaned] = useState(true)
+    const [expanded, setExpaned] = useState(true);
 
     const sidebarVariants = {
         true: {
-            left: '0'
+            left: "0",
         },
         false: {
-            left: '-60%'
-        }
-    }
+            left: "-60%",
+        },
+    };
+
     return (
         <>
-            <div className="bars" style={expanded ? { left: '60%' } : { left: '5%' }} onClick={() => setExpaned(!expanded)}>
+            <div
+                className="bars"
+                style={expanded ? { left: "60%" } : { left: "5%" }}
+                onClick={() => setExpaned(!expanded)}
+            >
                 <UilBars />
             </div>
-            <motion.div className='sidebar'
+            <motion.div
+                className="sidebar"
                 variants={sidebarVariants}
-                animate={window.innerWidth <= 768 ? `${expanded}` : ''}
+                animate={window.innerWidth <= 768 ? `${expanded}` : ""}
             >
                 <div className="flex h-16  font-bold text-2xl text-[#ffd000e1] gap-2 items-center justify-start">
                     <img className="w-[3rem] [h-3rem]" src={logo} alt="" />
@@ -108,19 +123,25 @@ const Sidebar = () => {
                         Dashboard
                     </h1>
                 </div>
-                <div className="menus">
-                    {SidebarData.map((item, index) => (
-                        <NavLink
-                            to={item.link}
-                            className={selected === index ? "menuItems actives" : "menuItems"}
-                            key={index}
-                            onClick={() => setSelected(index)}
-                        >
-                            <item.icon />
-                            <span>{item.heading}</span>
-                        </NavLink>
-                    ))}
-                </div>
+                {loading ? (
+                    <p>Loading...</p>
+                ) : (
+                    <div className="menus">
+                        {SidebarData.map((item, index) => (
+                            <NavLink
+                                to={item.link}
+                                className={
+                                    selected === index ? "menuItems actives" : "menuItems"
+                                }
+                                key={index}
+                                onClick={() => setSelected(index)}
+                            >
+                                <item.icon />
+                                <span>{item.heading}</span>
+                            </NavLink>
+                        ))}
+                    </div>
+                )}
             </motion.div>
         </>
     );

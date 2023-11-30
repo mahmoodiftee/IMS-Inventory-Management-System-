@@ -14,7 +14,7 @@ const ProductManagement = () => {
             try {
                 if (user) {
                     console.log('User Email:', user.email);
-                    const response = await axios.get(`https://ims-server-kappa.vercel.app/products?email=${encodeURIComponent(user.email || '')}`);
+                    const response = await axios.get(`http://localhost:5000/products?email=${encodeURIComponent(user.email || '')}`);
                     const userProducts = response.data;
                     console.log(userProducts);
 
@@ -40,7 +40,7 @@ const ProductManagement = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://ims-server-kappa.vercel.app/products/${_id}`, {
+                fetch(`http://localhost:5000/products/${_id}`, {
                     method: 'DELETE'
                 }
 

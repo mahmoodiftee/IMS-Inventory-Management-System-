@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
 
   const updateUserData = async (currentUser) => {
     try {
-      const userDataResponse = await axios.get(`https://ims-server-kappa.vercel.app/users`);
+      const userDataResponse = await axios.get(`http://localhost:5000/users`);
       const allUsers = userDataResponse.data;
       const userInfo = allUsers.find(u => u.email === currentUser.email);
       
