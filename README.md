@@ -1,4 +1,4 @@
-# Library Management System
+# IMS (Inventory-Management-System)
 ![IMS](https://i.ibb.co/Khr8X86/Screenshot-2023-12-09-235034.png)
 - Live Link: https://inventory-management-sys-85215.web.app/
 #  Technology Used:
@@ -7,6 +7,8 @@
 Axios,Stripe,react-pdf,aos, framer-motion,react-hot-toast, recharts, Swiper JS, Lottiefiles etc.
 
 # Project Features
+Inventory Mastermind is an advanced Inventory Management System designed to streamline and optimize the management of products in a seamless and efficient manner.
+
 - Product Management: Users can easily add new products to the inventory, providing essential details such as product name, description, quantity, and price.
 A user-friendly interface allows for effortless updating and deletion of products, ensuring the inventory remains accurate and up-to-date. Transaction Processing with Stripe
 - Integration: The system facilitates smooth and secure transactions by integrating with Stripe, allowing users to make payments seamlessly. Users can keep track of all transactions, view payment statuses, and receive confirmation of successful payments.
